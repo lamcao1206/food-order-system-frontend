@@ -1,0 +1,148 @@
+@import '../../../../styles/__mantine.scss';
+
+.section {
+  padding: rem(80) 0;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.header {
+  margin-bottom: rem(60);
+}
+
+.title {
+  font-size: rem(48);
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+
+  @include smaller-than($mantine-breakpoint-md) {
+    font-size: rem(36);
+  }
+}
+
+.subtitle {
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.contactTitle {
+  font-size: rem(28);
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.contactCard {
+  padding: rem(32);
+  border: 1px solid #e9ecef;
+  background: white;
+}
+
+.contactItem {
+  align-items: flex-start;
+  gap: rem(16);
+}
+
+.contactIcon {
+  width: rem(48);
+  height: rem(48);
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  flex-shrink: 0;
+}
+
+.orderButtons {
+  display: flex;
+  gap: rem(16);
+  margin-top: rem(24);
+
+  @include smaller-than($mantine-breakpoint-sm) {
+    flex-direction: column;
+  }
+}
+
+.orderButton {
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: rem(12) rem(32);
+  border-radius: rem(50);
+  flex: 1;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(45deg, #e55a2b, #e0841a);
+    transform: translateY(-2px);
+  }
+}
+
+.callButton {
+  color: #ff6b35;
+  border-color: #ff6b35;
+  background: white;
+  font-weight: 600;
+  padding: rem(12) rem(32);
+  border-radius: rem(50);
+  flex: 1;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #ff6b35;
+    color: white;
+    transform: translateY(-2px);
+  }
+}
+
+.formCard {
+  padding: rem(32);
+  border: 1px solid #e9ecef;
+  background: white;
+  height: 100%;
+}
+
+.formTitle {
+  font-size: rem(24);
+  font-weight: 600;
+  color: #2c3e50;
+  margin: 0 0 rem(24) 0;
+}
+
+.input {
+  :global(.mantine-Input-input) {
+    border-radius: rem(8);
+    border: 1px solid #e9ecef;
+    transition: all 0.3s ease;
+
+    &:focus {
+      border-color: #ff6b35;
+      box-shadow: 0 0 0 2px rgba(255, 107, 53, 0.1);
+    }
+  }
+
+  :global(.mantine-Input-label) {
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: rem(8);
+  }
+}
+
+.submitButton {
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  border: none;
+  color: white;
+  font-weight: 600;
+  padding: rem(12) rem(24);
+  border-radius: rem(8);
+  margin-top: rem(16);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(45deg, #e55a2b, #e0841a);
+    transform: translateY(-2px);
+  }
+}

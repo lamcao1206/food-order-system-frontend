@@ -1,0 +1,107 @@
+@import '../../../../styles/__mantine.scss';
+
+.footer {
+  background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  color: white;
+  padding: rem(60) 0 rem(30);
+}
+
+.logo {
+  font-size: rem(32);
+  font-weight: 700;
+  color: #ff6b35;
+  margin: 0;
+  text-decoration: none;
+}
+
+.description {
+  color: #bdc3c7;
+  line-height: 1.6;
+  font-size: rem(16);
+  margin: 0;
+}
+
+.sectionTitle {
+  font-size: rem(18);
+  font-weight: 600;
+  color: white;
+  margin: 0 0 rem(16) 0;
+}
+
+.footerLink {
+  color: #bdc3c7;
+  text-decoration: none;
+  font-size: rem(14);
+  transition: color 0.3s ease;
+
+  &:hover {
+    color: #ff6b35;
+  }
+}
+
+.socialLinks {
+  margin-top: rem(8);
+}
+
+.socialLink {
+  color: #bdc3c7;
+  transition: all 0.3s ease;
+  padding: rem(8);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(40);
+  height: rem(40);
+
+  &:hover {
+    color: white;
+    background: #ff6b35;
+    transform: translateY(-2px);
+  }
+}
+
+.contactIcon {
+  color: #ff6b35;
+  flex-shrink: 0;
+  margin-top: rem(2);
+}
+
+.contactText {
+  color: #bdc3c7;
+  font-size: rem(14);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.divider {
+  border-color: rgba(255, 255, 255, 0.2);
+  margin: rem(40) 0 rem(30);
+}
+
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: rem(16);
+
+  @include smaller-than($mantine-breakpoint-sm) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.copyright {
+  color: #bdc3c7;
+  font-size: rem(14);
+  margin: 0;
+}
+
+.madeWith {
+  color: #ff6b35;
+  font-size: rem(14);
+  font-weight: 500;
+  margin: 0;
+}

@@ -1,0 +1,130 @@
+@import '../../../../styles/__mantine.scss';
+
+.section {
+  padding: rem(80) 0;
+  background: #f8f9fa;
+}
+
+.header {
+  margin-bottom: rem(60);
+}
+
+.title {
+  font-size: rem(48);
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+
+  @include smaller-than($mantine-breakpoint-md) {
+    font-size: rem(36);
+  }
+}
+
+.subtitle {
+  color: #6c757d;
+  line-height: 1.6;
+}
+
+.pizzaGrid {
+  margin-bottom: rem(60);
+}
+
+.pizzaCard {
+  height: 100%;
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.popularBadge {
+  position: absolute;
+  top: rem(12);
+  right: rem(12);
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  color: white;
+  z-index: 1;
+  font-weight: 600;
+}
+
+.pizzaImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: rem(120);
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe8e8 100%);
+  margin: rem(-16) rem(-16) rem(16) rem(-16);
+  border-radius: rem(12) rem(12) 0 0;
+}
+
+.cardContent {
+  padding: 0;
+}
+
+.pizzaName {
+  color: #2c3e50;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pizzaDescription {
+  color: #6c757d;
+  line-height: 1.5;
+  min-height: rem(40);
+}
+
+.pizzaInfo {
+  margin: rem(8) 0;
+}
+
+.starIcon {
+  color: #ffc107;
+}
+
+.priceGroup {
+  margin-top: rem(16);
+  padding-top: rem(16);
+  border-top: 1px solid #e9ecef;
+}
+
+.price {
+  color: #ff6b35;
+  margin: 0;
+}
+
+.orderButton {
+  background: linear-gradient(45deg, #ff6b35, #f7931e);
+  border: none;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(45deg, #e55a2b, #e0841a);
+    transform: translateY(-1px);
+  }
+}
+
+.viewAllSection {
+  text-align: center;
+}
+
+.viewAllButton {
+  color: #ff6b35;
+  border-color: #ff6b35;
+  font-weight: 600;
+  padding: rem(12) rem(32);
+  border-radius: rem(50);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: #ff6b35;
+    color: white;
+    transform: translateY(-2px);
+  }
+}

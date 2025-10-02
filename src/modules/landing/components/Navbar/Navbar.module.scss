@@ -1,0 +1,94 @@
+@import '../../../../styles/__mantine.scss';
+
+.header {
+  background: white;
+  border-bottom: 1px solid #e9ecef;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: rem(6) 0;
+}
+
+.logo {
+  width: rem(35);
+  height: rem(35);
+  object-fit: contain;
+}
+
+.brandName {
+  font-size: rem(24);
+  font-weight: 700;
+  color: #ff6b35;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.desktopButtons {
+  gap: rem(12);
+}
+
+.signInButton {
+  border-color: #ff6b35;
+  color: #ff6b35;
+  font-weight: 600;
+  height: rem(40);
+  padding: 0 rem(24);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #ff6b35;
+    color: white;
+    transform: translateY(-1px);
+  }
+}
+
+.signUpButton {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border: none;
+  color: white;
+  font-weight: 600;
+  height: rem(40);
+  padding: 0 rem(24);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #e55a2b, #e8821a);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 53, 0.3);
+  }
+}
+
+.burger {
+  color: #2c3e50;
+  
+  &:hover {
+    background-color: #f8f9fa;
+  }
+}
+
+.mobileSignInButton {
+  border-color: #ff6b35;
+  color: #ff6b35;
+  font-weight: 600;
+  height: rem(48);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #ff6b35;
+    color: white;
+  }
+}
+
+.mobileSignUpButton {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border: none;
+  color: white;
+  font-weight: 600;
+  height: rem(48);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #e55a2b, #e8821a);
+  }
+}
