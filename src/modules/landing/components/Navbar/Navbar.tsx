@@ -5,6 +5,7 @@ import classes from "./Navbar.module.scss";
 import AppLogo from "@/assets/png/app-icon.png";
 import SignInModal from "../SignInModal";
 import SignUpModal from "../SignUpModal";
+import { Link } from "react-router-dom";
 
 export function NavbarLanding() {
   const [opened, { toggle, close }] = useDisclosure(false);
@@ -42,7 +43,11 @@ export function NavbarLanding() {
                 PizzaHub
               </Text>
             </Group>
-
+            <Group visibleFrom="sm" className={classes.navLinks}>
+              <Link to="/food/list">
+                Menu
+              </Link>
+            </Group>
             <Group visibleFrom="sm" className={classes.desktopButtons}>
               <Button 
                 variant="outline" 

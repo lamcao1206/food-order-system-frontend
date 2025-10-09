@@ -1,0 +1,19 @@
+@import "../../../../styles/__mantine.scss"; 
+
+.summaryTitle {
+  font-weight: 700;
+  font-size: rem(24);
+  color: #343a40;
+}
+
+.summaryItemName {
+  font-weight: 600;
+  font-size: rem(14);
+  color: #343a40;
+
+}
+
+.summaryItemPrice {
+  font-weight: 600;
+  color: #fa5252;
+}

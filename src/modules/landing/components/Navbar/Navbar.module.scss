@@ -92,3 +92,39 @@
     background: linear-gradient(135deg, #e55a2b, #e8821a);
   }
 }
+
+.navLinks {
+  display: flex;
+  gap: 1.5rem; // 24px
+  align-items: center;
+
+  a {
+    text-decoration: none;    
+    color: #ff6b35; 
+    font-weight: 600;
+    font-size: 1.25rem; // 20px
+    position: relative;
+    transition: color 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+      color: #e55a2b; 
+      transform: translateY(-2px);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background-color: #e55a2b; 
+      transition: width 0.3s ease;
+    }
+
+    &:hover::after {
+      width: 100%;
+    }
+  }
+}
+

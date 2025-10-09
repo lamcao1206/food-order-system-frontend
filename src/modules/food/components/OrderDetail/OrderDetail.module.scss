@@ -1,0 +1,12 @@
+@import "../../../../styles/__mantine.scss"; 
+
+.orderDetail {
+  min-width: rem(360);
+  max-height: calc(100vh - 20px);
+  padding: rem(20);
+  background-color: white;
+  border-left: 1px solid #e9ecef;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+

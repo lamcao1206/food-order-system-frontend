@@ -1,0 +1,21 @@
+@import "../../../../styles/__mantine.scss"; 
+
+.summaryTotalRow {
+  font-weight: 700;
+  font-size: rem(16);
+  color: #343a40;
+  padding-top: rem(10);
+  border-top: 1px solid #e9ecef;
+}
+
+.summaryTotalPrice {
+  font-size: rem(18);
+  color: #fa5252;
+}
+
+.checkoutButton {
+  background-color: #e53935;
+  &:hover {
+    background-color: #c62828;
+  }
+}
