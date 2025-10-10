@@ -11,7 +11,7 @@ import classes from "./OrderItemsList.module.scss";
 import type { CartItemInput } from "@/interfaces/food.interface";
 import useCartStore from "@/lib/zustand/stores/useCartStore";
 import type { IFoodState } from "@/lib/zustand/slices/cartSlice";
-
+import { IconPizza } from "@tabler/icons-react";
 const OrderItemsList = () => {
   const cartItems: CartItemInput[] = useCartStore(
     (state: IFoodState) => state.cart
@@ -102,11 +102,8 @@ const OrderItemsList = () => {
                     <Text className={classes.summaryItemPrice}>
                       {totalAmount.toLocaleString("vi-VN")}đ
                     </Text>
-                    <img
-                      src="pizza-mini.jpg"
-                      alt="Mini Pizza"
-                      style={{ width: "40px", borderRadius: "4px" }}
-                    />
+                    <IconPizza style={{ width: "40px", borderRadius: "4px" }}/>
+
                   </Stack>
                 </Group>
                 {index < cartItems.length - 1 && (

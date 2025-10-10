@@ -13,8 +13,8 @@ import classes from "./FoodCustomizeModal.module.scss";
 import { Base, type ProductFormInput } from "@/interfaces/food.interface";
 import useCartStore from "@/lib/zustand/stores/useCartStore";
 
-const size9InchImage = "pizza-9inch.png";
-const size12InchImage = "pizza-12inch.png";
+const size9InchImage = "https://dominos.vn/img/icon/pizza-size-2.png";
+const size12InchImage = "https://dominos.vn/img/icon/pizza-size-2.png";
 
 const CustomOption = ({
   label,
@@ -65,9 +65,9 @@ const ProductCustomizenModal = ({
   product,
 }: FoodCustomizeModalProps) => {
   const baseOptions = [
-    { label: Base.THIN, price: 0, image: "base-thick.png" },
-    { label: Base.MEDIUM, price: 0, image: "base-medium.png" },
-    { label: Base.THICK, price: 0, image: "base-thin.png" },
+    { label: Base.THIN, price: 0, image: "https://dominos.vn/img/icon/pizza-base-1.png" },
+    { label: Base.MEDIUM, price: 0, image: "https://dominos.vn/img/icon/pizza-base-2.png" },
+    { label: Base.THICK, price: 0, image: "https://dominos.vn/img/icon/pizza-base-3.png" },
   ];
 
   const sizeOptions = product.type?.map((prod) => ({
@@ -78,21 +78,21 @@ const ProductCustomizenModal = ({
 
   const extraToppingList = useMemo(
     () => [
-      { label: 'Add Cheese 9"', price: 35000, image: "cheese-small.png" },
-      { label: 'Double Cheese 9"', price: 65000, image: "cheese-medium.png" },
-      { label: 'Triple Cheese 9"', price: 95000, image: "cheese-large.png" },
+      { label: 'Add Cheese 9"', price: 35000, image: "https://img.dominos.vn/1phomai-v.png" },
+      { label: 'Double Cheese 9"', price: 65000, image: "https://img.dominos.vn/2phomai-v.png" },
+      { label: 'Triple Cheese 9"', price: 95000, image: "https://img.dominos.vn/3phomai-v.png" },
     ],
     []
   );
 
   const crustOptions = useMemo(
     () => [
-      { label: '9" Cheese Ring', price: 69000, image: "crust-cheese.png" },
-      { label: '9" Cheese Sausage', price: 69000, image: "crust-sausage.png" },
+      { label: '9" Cheese Ring', price: 69000, image: "https://img.dominos.vn/phomai.png" },
+      { label: '9" Cheese Sausage', price: 69000, image: "https://img.dominos.vn/xucxic.png" },
       {
         label: '9" Cheese Sausage Ring',
         price: 99000,
-        image: "crust-sausage-cheese.png",
+        image: "https://img.dominos.vn/phomaixucxich.png",
       },
     ],
     []

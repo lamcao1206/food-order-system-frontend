@@ -1,7 +1,9 @@
 import { Box, Stack,Text,Grid } from "@mantine/core";
 import classes from "./ProductGrid.module.scss";
 import { ProductCard } from "../ProductCard";
-
+import PizzaSausage from '@/assets/jpg/PizzaSausage.jpg';
+import PizzaVegan from '@/assets/jpg/PizzaVegan.jpg';
+import PizzaSeaFood from '@/assets/jpg/PizzaSeaFood.jpg';
 const pizzaProducts = [
   {
     id: 1,
@@ -11,7 +13,7 @@ const pizzaProducts = [
       { size: 9, price: 230 },
       { size: 12, price: 280 },
     ],
-    image: "pizza-1.jpg",
+    image: PizzaSeaFood,
   },
   {
     id: 2,
@@ -21,7 +23,7 @@ const pizzaProducts = [
       { size: 9, price: 240 },
       { size: 12, price: 290 },
     ],
-    image: "pizza-2.jpg",
+    image: PizzaSeaFood,
   },
   {
     id: 3,
@@ -31,7 +33,7 @@ const pizzaProducts = [
       { size: 9, price: 250 },
       { size: 12, price: 300 },
     ],
-    image: "pizza-3.jpg",
+    image: PizzaVegan,
   },
   {
     id: 4,
@@ -41,7 +43,7 @@ const pizzaProducts = [
       { size: 9, price: 260 },
       { size: 12, price: 310 },
     ],
-    image: "pizza-4.jpg",
+    image: PizzaSausage,
   },
   {
     id: 5,
@@ -51,7 +53,7 @@ const pizzaProducts = [
       { size: 9, price: 270 },
       { size: 12, price: 320 },
     ],
-    image: "pizza-5.jpg",
+    image: PizzaVegan,
   },
   {
     id: 6,
@@ -61,7 +63,7 @@ const pizzaProducts = [
       { size: 9, price: 220 },
       { size: 12, price: 270 },
     ],
-    image: "pizza-6.jpg",
+    image: PizzaVegan,
   },
   {
     id: 7,
@@ -71,7 +73,7 @@ const pizzaProducts = [
       { size: 9, price: 245 },
       { size: 12, price: 295 },
     ],
-    image: "pizza-7.jpg",
+    image: PizzaSausage,
   },
   {
     id: 8,
@@ -81,7 +83,7 @@ const pizzaProducts = [
       { size: 9, price: 255 },
       { size: 12, price: 305 },
     ],
-    image: "pizza-8.jpg",
+    image: PizzaSausage,
   },
 ];
 
