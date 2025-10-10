@@ -12,9 +12,16 @@ import {
   Box,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { IconAlertCircle, IconMail, IconLock } from "@tabler/icons-react";
+import {
+  IconAlertCircle,
+  IconMail,
+  IconLock,
+  IconCheck,
+} from "@tabler/icons-react";
 import { useState } from "react";
+import { notifications } from "@mantine/notifications";
 import styles from "./SignInModal.module.scss";
+import { useNavigate } from "react-router-dom";
 
 interface SignInModalProps {
   opened: boolean;
@@ -22,9 +29,14 @@ interface SignInModalProps {
   onSwitchToSignUp: () => void;
 }
 
-const SignInModal = ({ opened, onClose, onSwitchToSignUp }: SignInModalProps) => {
+const SignInModal = ({
+  opened,
+  onClose,
+  onSwitchToSignUp,
+}: SignInModalProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const form = useForm({
     initialValues: {
@@ -33,21 +45,32 @@ const SignInModal = ({ opened, onClose, onSwitchToSignUp }: SignInModalProps) =>
     },
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      password: (value) => (value.length < 6 ? "Password must be at least 6 characters" : null),
+      password: (value) =>
+        value.length < 6 ? "Password must be at least 6 characters" : null,
     },
   });
 
   const handleSubmit = async (values: typeof form.values) => {
     setIsLoading(true);
     setError("");
-    
+
     try {
       // TODO: Implement actual authentication logic
       console.log("Sign in:", values);
-      
+
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      notifications.show({
+        title: "Login Successful",
+        message: "Welcome back!",
+        color: "green",
+        icon: <IconCheck size={18} />,
+      });
+
+      // ✅ Navigate after successful login
+      navigate("/food/list");
+
       // For demo purposes, just close the modal
       onClose();
       form.reset();

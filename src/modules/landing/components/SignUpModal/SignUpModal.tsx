@@ -14,9 +14,17 @@ import {
   Box,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { IconAlertCircle, IconMail, IconLock, IconUser } from "@tabler/icons-react";
+import {
+  IconAlertCircle,
+  IconMail,
+  IconLock,
+  IconUser,
+  IconCheck,
+} from "@tabler/icons-react";
 import { useState } from "react";
 import styles from "./SignUpModal.module.scss";
+import { notifications } from "@mantine/notifications";
+import { useNavigate } from "react-router-dom";
 
 interface SignUpModalProps {
   opened: boolean;
@@ -24,9 +32,15 @@ interface SignUpModalProps {
   onSwitchToSignIn: () => void;
 }
 
-const SignUpModal = ({ opened, onClose, onSwitchToSignIn }: SignUpModalProps) => {
+const SignUpModal = ({
+  opened,
+  onClose,
+  onSwitchToSignIn,
+}: SignUpModalProps) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   const form = useForm({
     initialValues: {
@@ -37,25 +51,39 @@ const SignUpModal = ({ opened, onClose, onSwitchToSignIn }: SignUpModalProps) =>
       agreeToTerms: false,
     },
     validate: {
-      firstName: (value) => (value.length < 2 ? "First name must be at least 2 characters" : null),
-      lastName: (value) => (value.length < 2 ? "Last name must be at least 2 characters" : null),
+      firstName: (value) =>
+        value.length < 2 ? "First name must be at least 2 characters" : null,
+      lastName: (value) =>
+        value.length < 2 ? "Last name must be at least 2 characters" : null,
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
-      password: (value) => (value.length < 6 ? "Password must be at least 6 characters" : null),
-      agreeToTerms: (value) => (!value ? "You must agree to the terms and conditions" : null),
+      password: (value) =>
+        value.length < 6 ? "Password must be at least 6 characters" : null,
+      agreeToTerms: (value) =>
+        !value ? "You must agree to the terms and conditions" : null,
     },
   });
 
   const handleSubmit = async (values: typeof form.values) => {
     setIsLoading(true);
     setError("");
-    
+
     try {
       // TODO: Implement actual registration logic
       console.log("Sign up:", values);
-      
+
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      notifications.show({
+        title: "Sign up Successful",
+        message: "Welcome to our platform!",
+        color: "green",
+        icon: <IconCheck size={18} />,
+      });
+
+      // ✅ Navigate after successful sign up
+      navigate("/food/list");
+
       // For demo purposes, just close the modal
       onClose();
       form.reset();
@@ -166,11 +194,21 @@ const SignUpModal = ({ opened, onClose, onSwitchToSignIn }: SignUpModalProps) =>
                 label={
                   <Text size="sm" c="dimmed">
                     I agree to the{" "}
-                    <Anchor href="#" size="sm" c="#ff6b35" style={{ textDecoration: "none" }}>
+                    <Anchor
+                      href="#"
+                      size="sm"
+                      c="#ff6b35"
+                      style={{ textDecoration: "none" }}
+                    >
                       Terms of Service
                     </Anchor>{" "}
                     and{" "}
-                    <Anchor href="#" size="sm" c="#ff6b35" style={{ textDecoration: "none" }}>
+                    <Anchor
+                      href="#"
+                      size="sm"
+                      c="#ff6b35"
+                      style={{ textDecoration: "none" }}
+                    >
                       Privacy Policy
                     </Anchor>
                   </Text>
