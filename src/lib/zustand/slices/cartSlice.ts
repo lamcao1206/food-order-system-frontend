@@ -3,17 +3,23 @@ import type { CartItemInput } from "@/interfaces/food.interface";
 
 export interface IFoodState {
   cart: CartItemInput[];
+  discount?: number | null;
+  extraVoucher?: number | null;
 
   actions: {
     addToCart: (item: CartItemInput) => void;
     removeFromCart: (itemId: number | string) => void;
     clearCart: () => void;
     updateQuantity: (itemId: number | string, quantity: number) => void;
+    setDiscount: (value: number | null) => void;
+    addVoucher: (value: number | null) => boolean;
   };
 }
 
 const cartSlice: StateCreator<IFoodState> = (set, get) => ({
   cart: [],
+  discount: null,
+  voucher: null,
 
   actions: {
     addToCart: (item) => {
@@ -51,6 +57,18 @@ const cartSlice: StateCreator<IFoodState> = (set, get) => ({
           item.id === itemId ? { ...item, quantity } : item
         ),
       });
+    },
+    setDiscount: (value: number | null) => {
+      set({ discount: value });
+    },
+
+    addVoucher: (value: number | null) => {
+      const { extraVoucher } = get();
+      if (extraVoucher != null) {
+        return false;
+      }
+      set({ extraVoucher: value });
+      return true;
     },
   },
 });

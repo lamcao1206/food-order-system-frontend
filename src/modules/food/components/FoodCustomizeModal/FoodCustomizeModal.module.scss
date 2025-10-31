@@ -119,14 +119,6 @@
   z-index: 10;
 }
 
-.quantityButton {
-  border: 1px solid #e9ecef;
-  background-color: white;
-  width: rem(30);
-  height: rem(30);
-  font-size: rem(18);
-}
-
 .quantityDisplay {
   border: 1px solid #e9ecef;
   border-left: none;
@@ -136,6 +128,12 @@
   line-height: rem(30);
   font-weight: 600;
   color: #343a40;
+}
+
+.quantityButton {
+  padding: rem(4);
+  width: rem(40);
+  height: rem(32);
 }
 
 .addButton {

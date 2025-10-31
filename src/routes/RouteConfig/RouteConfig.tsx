@@ -3,7 +3,7 @@ import type { RouteObject } from "react-router-dom";
 import AuthRoute from "../AuthRoute/AuthRoute";
 import { LandingPage } from "@/modules/landing/screens/LandingPage";
 import {FoodList} from "@/modules/food/screens/FoodList";
-
+import {OrderCheckOutPage} from "@/modules/food/screens/OrderCheckOut";
 type RouteType = RouteObject & { authCanAccess?: boolean };
 
 const publicRoute: RouteType = {
@@ -29,6 +29,12 @@ const foodRoute: RouteType = {
   element: <FoodList />
 }
 
+const orderRoute: RouteType = {
+  id: RouteId.ORDER,
+  path: "order",
+  element: <OrderCheckOutPage />,
+};
+
 const routes: RouteType[] = [
   {
     id: RouteId.PUBLIC_ROOT,
@@ -38,8 +44,8 @@ const routes: RouteType[] = [
   {
     id: RouteId.PRIVATE_ROOT,
     path: "/food",
-    children: [foodRoute]
-  }
+    children: [foodRoute,orderRoute]
+  },
 ];
 
 export default routes;

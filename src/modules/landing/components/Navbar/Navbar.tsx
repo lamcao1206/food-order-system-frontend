@@ -47,6 +47,9 @@ export function NavbarLanding() {
               <Link to="/food/list">
                 Menu
               </Link>
+              <Link to="/food/order">
+                Order
+              </Link>
             </Group>
             <Group visibleFrom="sm" className={classes.desktopButtons}>
               <Button 

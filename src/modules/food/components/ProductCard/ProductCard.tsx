@@ -13,7 +13,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <>
-      <Box className={classes.productCard}>
+      <Box className={classes.productCard} onClick={() => setOpened(true)}>
         <Box className={classes.productImage}>
           <img
             src={product.image}
@@ -22,17 +22,23 @@ const ProductCard = ({ product }: ProductCardProps) => {
           />
         </Box>
         <Stack className={classes.productDetails}>
-          <Text className={classes.productName} onClick={() => setOpened(true)}>
-            {product.name}
-          </Text>
+          <Text className={classes.productName}>{product.name}</Text>
           <Group className={classes.productInfo}>
-            <Text
-              className={classes.productInfoText}
-            >{`${product.type[0]?.size} inch`}</Text>
-            <Text className={classes.productInfoText}>-</Text>
-            <Text
-              className={classes.productInfoText}
-            >{`${product.type[0]?.price}.000₫`}</Text>
+            {Array.isArray(product.type) ? (
+              <>
+                <Text className={classes.productInfoText}>
+                  {`${product.type[0]?.size} inch`}
+                </Text>
+                <Text className={classes.productInfoText}>-</Text>
+                <Text className={classes.productInfoText}>
+                  {`${product.type[0]?.price}.000₫`}
+                </Text>
+              </>
+            ) : (
+              <Text className={classes.productInfoText}>
+                {`${product.type.price}.000₫`}
+              </Text>
+            )}
           </Group>
         </Stack>
       </Box>

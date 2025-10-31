@@ -17,3 +17,14 @@
   font-weight: 600;
   color: #fa5252;
 }
+
+.trashIcon {
+  width: 30px;
+  border-radius: 4px;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: red;
+    cursor: pointer;
+  }
+}

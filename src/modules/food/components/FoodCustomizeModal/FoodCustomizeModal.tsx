@@ -10,7 +10,12 @@ import {
 } from "@mantine/core";
 import { useState, useMemo } from "react";
 import classes from "./FoodCustomizeModal.module.scss";
-import { Base, type ProductFormInput } from "@/interfaces/food.interface";
+import {
+  Base,
+  type ProductFormInput,
+  type ProductType,
+} from "@/interfaces/food.interface";
+import { FoodCategory } from "@/constants/food";
 import useCartStore from "@/lib/zustand/stores/useCartStore";
 
 const size9InchImage = "https://dominos.vn/img/icon/pizza-size-2.png";
@@ -64,31 +69,68 @@ const ProductCustomizenModal = ({
   onClose,
   product,
 }: FoodCustomizeModalProps) => {
+  const isPizza = product.category === FoodCategory.PIZZA;
+
   const baseOptions = [
-    { label: Base.THIN, price: 0, image: "https://dominos.vn/img/icon/pizza-base-1.png" },
-    { label: Base.MEDIUM, price: 0, image: "https://dominos.vn/img/icon/pizza-base-2.png" },
-    { label: Base.THICK, price: 0, image: "https://dominos.vn/img/icon/pizza-base-3.png" },
+    {
+      label: Base.THIN,
+      price: 0,
+      image: "https://dominos.vn/img/icon/pizza-base-1.png",
+    },
+    {
+      label: Base.MEDIUM,
+      price: 0,
+      image: "https://dominos.vn/img/icon/pizza-base-2.png",
+    },
+    {
+      label: Base.THICK,
+      price: 0,
+      image: "https://dominos.vn/img/icon/pizza-base-3.png",
+    },
   ];
 
-  const sizeOptions = product.type?.map((prod) => ({
-    label: `Size ${prod?.size} inch`,
-    price: prod?.price * 1000,
-    image: prod?.size === 9 ? size9InchImage : size12InchImage,
-  }));
+  const sizeOptions = useMemo(() => {
+    if (!isPizza || !product.type) return [];
+    return (product.type as Array<ProductType>).map((prod) => ({
+      label: `Size ${prod?.size} inch`,
+      price: prod?.price * 1000,
+      image: prod?.size === 9 ? size9InchImage : size12InchImage,
+    }));
+  }, [isPizza, product.type]);
 
   const extraToppingList = useMemo(
     () => [
-      { label: 'Add Cheese 9"', price: 35000, image: "https://img.dominos.vn/1phomai-v.png" },
-      { label: 'Double Cheese 9"', price: 65000, image: "https://img.dominos.vn/2phomai-v.png" },
-      { label: 'Triple Cheese 9"', price: 95000, image: "https://img.dominos.vn/3phomai-v.png" },
+      {
+        label: 'Add Cheese 9"',
+        price: 35000,
+        image: "https://img.dominos.vn/1phomai-v.png",
+      },
+      {
+        label: 'Double Cheese 9"',
+        price: 65000,
+        image: "https://img.dominos.vn/2phomai-v.png",
+      },
+      {
+        label: 'Triple Cheese 9"',
+        price: 95000,
+        image: "https://img.dominos.vn/3phomai-v.png",
+      },
     ],
     []
   );
 
   const crustOptions = useMemo(
     () => [
-      { label: '9" Cheese Ring', price: 69000, image: "https://img.dominos.vn/phomai.png" },
-      { label: '9" Cheese Sausage', price: 69000, image: "https://img.dominos.vn/xucxic.png" },
+      {
+        label: '9" Cheese Ring',
+        price: 69000,
+        image: "https://img.dominos.vn/phomai.png",
+      },
+      {
+        label: '9" Cheese Sausage',
+        price: 69000,
+        image: "https://img.dominos.vn/xucxic.png",
+      },
       {
         label: '9" Cheese Sausage Ring',
         price: 99000,
@@ -101,32 +143,45 @@ const ProductCustomizenModal = ({
   const [selectedBase, setSelectedBase] = useState<string>(
     baseOptions[0].label
   );
-  const [selectedSize, setSelectedSize] = useState(sizeOptions[0].label);
+  const [selectedSize, setSelectedSize] = useState(sizeOptions[0]?.label || "");
   const [selectedCrust, setSelectedCrust] = useState("");
   const [selectedExtraTopping, setSelectedExtraTopping] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
-
   const { addToCart } = useCartStore((state) => state.actions);
 
   const totalPrice = useMemo(() => {
-    let price =
-      sizeOptions.find((opt) => opt.label === selectedSize)?.price || 0;
-    if (selectedCrust)
-      price +=
+    let basePrice = 0;
+
+    if (sizeOptions.length > 0) {
+      // Pizza
+      basePrice =
+        sizeOptions.find((opt) => opt.label === selectedSize)?.price || 0;
+    } else if (product.type && !Array.isArray(product.type)) {
+      // Non-Pizza
+      basePrice = ((product.type as { price: number }).price || 0) * 1000;
+    }
+
+    if (selectedCrust) {
+      basePrice +=
         crustOptions.find((opt) => opt.label === selectedCrust)?.price || 0;
-    if (selectedExtraTopping)
-      price +=
+    }
+
+    if (selectedExtraTopping) {
+      basePrice +=
         extraToppingList.find((opt) => opt.label === selectedExtraTopping)
           ?.price || 0;
-    return price * quantity;
+    }
+
+    return basePrice * quantity;
   }, [
+    sizeOptions,
     selectedSize,
     selectedCrust,
     selectedExtraTopping,
     quantity,
-    sizeOptions,
     crustOptions,
     extraToppingList,
+    product.type,
   ]);
 
   const handleQuantityChange = (delta: number) =>
@@ -136,12 +191,16 @@ const ProductCustomizenModal = ({
     addToCart({
       id: product.id,
       name: product.name,
-      size: selectedSize.includes("9") ? 9 : 12,
-      price: totalPrice,
+      price: Math.floor(totalPrice / quantity),
       quantity,
-      base: selectedBase as Base,
-      additionalCheese: selectedExtraTopping ?? "",
-      additionalCrust: selectedCrust ?? "",
+      ...(isPizza
+        ? {
+            base: selectedBase as Base,
+            additionalCheese: selectedExtraTopping ?? "",
+            additionalCrust: selectedCrust ?? "",
+            size: selectedSize.includes("9") ? 9 : 12,
+          }
+        : {}),
     });
     onClose();
   };
@@ -163,7 +222,7 @@ const ProductCustomizenModal = ({
             minWidth: "auto",
             fontSize: "20px",
             borderRadius: "8px",
-            background: "red"
+            background: "red",
           }}
           onClick={() => onClose()}
         >
@@ -182,78 +241,84 @@ const ProductCustomizenModal = ({
               {product.description}
             </Text>
             <Divider my="sm" />
+            {product.category === FoodCategory.PIZZA && (
+              <>
+                <Box className={classes.optionGroup}>
+                  <Text component="h3">Choose base option</Text>
+                  <Radio.Group value={selectedBase} onChange={setSelectedBase}>
+                    <Stack gap={0}>
+                      {baseOptions.map((opt) => (
+                        <CustomOption
+                          key={opt.label}
+                          label={opt.label}
+                          image={opt.image}
+                          type="radio"
+                        />
+                      ))}
+                    </Stack>
+                  </Radio.Group>
+                </Box>
 
-            <Box className={classes.optionGroup}>
-              <Text component="h3">Choose base option</Text>
-              <Radio.Group value={selectedBase} onChange={setSelectedBase}>
-                <Stack gap={0}>
-                  {baseOptions.map((opt) => (
-                    <CustomOption
-                      key={opt.label}
-                      label={opt.label}
-                      image={opt.image}
-                      type="radio"
-                    />
-                  ))}
-                </Stack>
-              </Radio.Group>
-            </Box>
+                <Box className={classes.optionGroup}>
+                  <Text component="h3">Select size</Text>
+                  <Radio.Group value={selectedSize} onChange={setSelectedSize}>
+                    <Stack gap={0}>
+                      {sizeOptions.map((opt) => (
+                        <CustomOption
+                          key={opt.label}
+                          label={opt.label}
+                          price={opt.price}
+                          image={opt.image}
+                          type="radio"
+                        />
+                      ))}
+                    </Stack>
+                  </Radio.Group>
+                </Box>
 
-            <Box className={classes.optionGroup}>
-              <Text component="h3">Select size</Text>
-              <Radio.Group value={selectedSize} onChange={setSelectedSize}>
-                <Stack gap={0}>
-                  {sizeOptions.map((opt) => (
-                    <CustomOption
-                      key={opt.label}
-                      label={opt.label}
-                      price={opt.price}
-                      image={opt.image}
-                      type="radio"
-                    />
-                  ))}
-                </Stack>
-              </Radio.Group>
-            </Box>
+                <Box className={classes.optionGroup}>
+                  <Text component="h3">Extra topping</Text>
+                  <Radio.Group
+                    value={selectedExtraTopping}
+                    onChange={setSelectedExtraTopping}
+                  >
+                    <Stack gap={0}>
+                      {extraToppingList.map((opt) => (
+                        <CustomOption
+                          key={opt.label}
+                          label={opt.label}
+                          price={opt.price}
+                          image={opt.image}
+                          type="radio"
+                          checked={selectedExtraTopping === opt.label}
+                          onChange={() => setSelectedExtraTopping(opt.label)}
+                        />
+                      ))}
+                    </Stack>
+                  </Radio.Group>
+                </Box>
 
-            <Box className={classes.optionGroup}>
-              <Text component="h3">Extra topping</Text>
-              <Radio.Group
-                value={selectedExtraTopping}
-                onChange={setSelectedExtraTopping}
-              >
-                <Stack gap={0}>
-                  {extraToppingList.map((opt) => (
-                    <CustomOption
-                      key={opt.label}
-                      label={opt.label}
-                      price={opt.price}
-                      image={opt.image}
-                      type="radio"
-                      checked={selectedExtraTopping === opt.label}
-                      onChange={() => setSelectedExtraTopping(opt.label)}
-                    />
-                  ))}
-                </Stack>
-              </Radio.Group>
-            </Box>
-
-            <Box className={classes.optionGroup}>
-              <Text component="h3">Crust option</Text>
-              <Radio.Group value={selectedCrust} onChange={setSelectedCrust}>
-                <Stack gap={0}>
-                  {crustOptions.map((opt) => (
-                    <CustomOption
-                      key={opt.label}
-                      label={opt.label}
-                      price={opt.price}
-                      image={opt.image}
-                      type="radio"
-                    />
-                  ))}
-                </Stack>
-              </Radio.Group>
-            </Box>
+                <Box className={classes.optionGroup}>
+                  <Text component="h3">Crust option</Text>
+                  <Radio.Group
+                    value={selectedCrust}
+                    onChange={setSelectedCrust}
+                  >
+                    <Stack gap={0}>
+                      {crustOptions.map((opt) => (
+                        <CustomOption
+                          key={opt.label}
+                          label={opt.label}
+                          price={opt.price}
+                          image={opt.image}
+                          type="radio"
+                        />
+                      ))}
+                    </Stack>
+                  </Radio.Group>
+                </Box>
+              </>
+            )}
           </Stack>
 
           <Box className={classes.modalFooter}>
