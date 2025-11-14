@@ -1,0 +1,64 @@
+@import "../../../../styles/__mantine.scss"; // Import cơ bản của Mantine
+
+.history_container {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.order_card {
+  padding: 20px;
+  border-radius: 12px;
+  background: #ffffff;
+}
+
+.cart_items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cart_item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 10px 0;
+  border-bottom: 1px solid #eee;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.order_summary {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.statusBadge {
+  color: white;
+  font-weight: 600;
+  padding: 0 8px;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  display: inline-block;
+  text-align: center;
+}
+
+.statusCompleted {
+  background-color: green;
+}
+
+.statusPending {
+  background-color: orange;
+}
+
+.statusCanceled {
+  background-color: red;
+}
+

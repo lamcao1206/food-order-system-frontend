@@ -4,6 +4,7 @@ import AuthRoute from "../AuthRoute/AuthRoute";
 import { LandingPage } from "@/modules/landing/screens/LandingPage";
 import {FoodList} from "@/modules/food/screens/FoodList";
 import {OrderCheckOutPage} from "@/modules/food/screens/OrderCheckOut";
+import { OrderHistoryPage } from "@/modules/food/screens/OrderHistory";
 type RouteType = RouteObject & { authCanAccess?: boolean };
 
 const publicRoute: RouteType = {
@@ -35,6 +36,12 @@ const orderRoute: RouteType = {
   element: <OrderCheckOutPage />,
 };
 
+const historyRoute: RouteType = {
+  id: RouteId.HISTORY,
+  path: "history",
+  element: <OrderHistoryPage />,
+};
+
 const routes: RouteType[] = [
   {
     id: RouteId.PUBLIC_ROOT,
@@ -44,7 +51,7 @@ const routes: RouteType[] = [
   {
     id: RouteId.PRIVATE_ROOT,
     path: "/food",
-    children: [foodRoute,orderRoute]
+    children: [foodRoute,orderRoute,historyRoute]
   },
 ];
 

@@ -47,3 +47,8 @@ export const vouchers: Record<string, number> = {
   MYDISCOUNT: 50,
   NEWFRIEND: 100,
 };
+
+export enum OrderStatus {
+  PENDING= 'pending',
+  COMPLETED= 'completed',
+}
