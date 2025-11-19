@@ -1,0 +1,17 @@
+{
+  "title": "Restaurant Orders",
+  "subtitle": "Manage and track all incoming orders",
+  "orderId": "Order ID",
+  "customer": "Customer",
+  "items": "Items",
+  "orderDate": "Order Date",
+  "status": "Status",
+  "total": "Total",
+  "address": "Address",
+  "payment": "Payment",
+  "statusPending": "PENDING",
+  "statusPreparing": "PREPARING",
+  "statusDelivering": "DELIVERING",
+  "statusCompleted": "COMPLETED",
+  "statusCancelled": "CANCELLED"
+}

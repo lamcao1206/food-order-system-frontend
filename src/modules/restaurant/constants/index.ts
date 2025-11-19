@@ -1,0 +1,8 @@
+const RESTAURANT_EMAIL='pizzahut@gmail.com'
+
+const RESTAURANT_PASSWORD='12345678'
+
+export {
+  RESTAURANT_EMAIL,
+  RESTAURANT_PASSWORD
+}

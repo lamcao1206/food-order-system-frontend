@@ -1,0 +1,17 @@
+{
+  "title": "Đơn Hàng Nhà Hàng",
+  "subtitle": "Quản lý và theo dõi tất cả đơn hàng đến",
+  "orderId": "Mã Đơn Hàng",
+  "customer": "Khách Hàng",
+  "items": "Món Ăn",
+  "orderDate": "Ngày Đặt",
+  "status": "Trạng Thái",
+  "total": "Tổng Tiền",
+  "address": "Địa Chỉ",
+  "payment": "Thanh Toán",
+  "statusPending": "CHỜ XỬ LÝ",
+  "statusPreparing": "ĐANG CHUẨN BỊ",
+  "statusDelivering": "ĐANG GIAO",
+  "statusCompleted": "HOÀN THÀNH",
+  "statusCancelled": "ĐÃ HỦY"
+}

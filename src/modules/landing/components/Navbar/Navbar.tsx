@@ -65,7 +65,7 @@ export function NavbarLanding() {
                 PizzaHub
               </Text>
             </Group>
-            {user && (
+            {user && user.role === 'normal' && (
               <Group visibleFrom="sm" className={classes.navLinks}>
                 <Link to="/food/list">{t("landing:navbar.menu")}</Link>
                 <Link to="/food/order">{t("landing:navbar.order")}</Link>

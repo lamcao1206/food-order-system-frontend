@@ -6,11 +6,13 @@ import enCommon from '../locales/en/common.json';
 import enFood from '../locales/en/food.json';
 import enAuth from '../locales/en/auth.json';
 import enLanding from '../locales/en/landing.json';
+import enRestaurant from '../locales/en/restaurant.json';
 
 import viCommon from '../locales/vi/common.json';
 import viFood from '../locales/vi/food.json';
 import viAuth from '../locales/vi/auth.json';
 import viLanding from '../locales/vi/landing.json';
+import viRestaurant from '../locales/vi/restaurant.json';
 
 const resources = {
   en: {
@@ -18,12 +20,14 @@ const resources = {
     food: enFood,
     auth: enAuth,
     landing: enLanding,
+    restaurant: enRestaurant,
   },
   vi: {
     common: viCommon,
     food: viFood,
     auth: viAuth,
     landing: viLanding,
+    restaurant: viRestaurant,
   },
 };
 
