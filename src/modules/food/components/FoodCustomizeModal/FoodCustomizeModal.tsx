@@ -9,6 +9,7 @@ import {
   Divider,
 } from "@mantine/core";
 import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import classes from "./FoodCustomizeModal.module.scss";
 import {
   Base,
@@ -70,6 +71,7 @@ const ProductCustomizenModal = ({
   product,
 }: FoodCustomizeModalProps) => {
   const isPizza = product.category === FoodCategory.PIZZA;
+  const { t } = useTranslation('food');
 
   const baseOptions = [
     {
@@ -244,7 +246,7 @@ const ProductCustomizenModal = ({
             {product.category === FoodCategory.PIZZA && (
               <>
                 <Box className={classes.optionGroup}>
-                  <Text component="h3">Choose base option</Text>
+                  <Text component="h3">{t('customizeModal.chooseBaseOption')}</Text>
                   <Radio.Group value={selectedBase} onChange={setSelectedBase}>
                     <Stack gap={0}>
                       {baseOptions.map((opt) => (
@@ -260,7 +262,7 @@ const ProductCustomizenModal = ({
                 </Box>
 
                 <Box className={classes.optionGroup}>
-                  <Text component="h3">Select size</Text>
+                  <Text component="h3">{t('customizeModal.selectSize')}</Text>
                   <Radio.Group value={selectedSize} onChange={setSelectedSize}>
                     <Stack gap={0}>
                       {sizeOptions.map((opt) => (
@@ -277,7 +279,7 @@ const ProductCustomizenModal = ({
                 </Box>
 
                 <Box className={classes.optionGroup}>
-                  <Text component="h3">Extra topping</Text>
+                  <Text component="h3">{t('customizeModal.extraTopping')}</Text>
                   <Radio.Group
                     value={selectedExtraTopping}
                     onChange={setSelectedExtraTopping}
@@ -299,7 +301,7 @@ const ProductCustomizenModal = ({
                 </Box>
 
                 <Box className={classes.optionGroup}>
-                  <Text component="h3">Crust option</Text>
+                  <Text component="h3">{t('customizeModal.crustOption')}</Text>
                   <Radio.Group
                     value={selectedCrust}
                     onChange={setSelectedCrust}
@@ -345,7 +347,7 @@ const ProductCustomizenModal = ({
                 className={classes.addButton}
                 onClick={handleAddToCart}
               >
-                Add to cart {totalPrice.toLocaleString("vi-VN")}đ
+                {t('customizeModal.addToCart')} {totalPrice.toLocaleString("vi-VN")}đ
               </Button>
             </Group>
           </Box>

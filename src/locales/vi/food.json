@@ -75,5 +75,125 @@
   "success": {
     "title": "Thành công!",
     "message": "Bạn đã đặt hàng thành công."
+  },
+  "products": {
+    "superExtraTopping": "Siêu Nhiều Topping",
+    "bbqChickenDrumsticks": {
+      "name": "Đùi Gà BBQ",
+      "description": "Đùi gà mọng nước phủ sốt BBQ khói và nướng hoàn hảo."
+    },
+    "onionRings": {
+      "name": "Hành Tây Chiên Giòn",
+      "description": "Hành tây tẩm bột chiên giòn vàng, phục vụ với sốt chấm."
+    },
+    "chickenWings": {
+      "name": "Cánh Gà",
+      "description": "Cánh gà mọng nước trộn sốt đậm đà, phục vụ với cần tây."
+    },
+    "seafoodGreenPepperPizza": {
+      "name": "Pizza Hải Sản Ớt Xanh",
+      "description": "Hải sản tươi phủ ớt xanh, phô mai mozzarella và sốt cà chua chua ngọt tạo nên hương vị tuyệt vời."
+    },
+    "seafoodMayonnaisePizza": {
+      "name": "Pizza Hải Sản Mayonnaise",
+      "description": "Sự kết hợp béo ngậy của hải sản, sốt mayonnaise và phô mai tan chảy, tạo nên trải nghiệm vị giác phong phú và đậm đà."
+    },
+    "bbqChickenSupremePizza": {
+      "name": "Pizza Gà BBQ Đặc Biệt",
+      "description": "Thịt gà BBQ mềm, rau củ tươi và phô mai cao cấp, rưới sốt BBQ cho hương vị khói và thỏa mãn."
+    },
+    "mozzarellaCheeseSticks": {
+      "name": "Que Phô Mai Mozzarella",
+      "description": "Que phô mai mozzarella chiên giòn phục vụ với sốt cà chua chua ngọt cho sự thỏa mãn phô mai tuyệt đối."
+    },
+    "veggieDelightPizza": {
+      "name": "Pizza Rau Củ Hảo Hạng",
+      "description": "Hỗn hợp đầy màu sắc của rau củ tươi, sốt cà chua và phô mai tan chảy, mang đến lựa chọn chay nhẹ nhàng nhưng đầy hương vị."
+    },
+    "spaghettiCarbonara": {
+      "name": "Mì Spaghetti Carbonara",
+      "description": "Mì Ý cổ điển trộn với sốt trứng béo ngậy, thịt xông khói giòn và phô mai parmesan bào."
+    },
+    "hawaiianPineapplePizza": {
+      "name": "Pizza Hawaii Dứa",
+      "description": "Giăm bông cổ điển và dứa mọng nước trên đế bánh phô mai, cân bằng hoàn hảo giữa vị ngọt và mặn cho hương vị nhiệt đới."
+    },
+    "garlicBread": {
+      "name": "Bánh Mì Tỏi",
+      "description": "Lát bánh mì vàng giòn phủ bơ tỏi và rau mùi tây — món khai vị hoàn hảo để bắt đầu bữa ăn."
+    },
+    "honeyGlazedChicken": {
+      "name": "Gà Tẩm Mật Ong",
+      "description": "Gà nướng với lớp mật ong ngọt dính, mọng nước và đầy hương vị."
+    },
+    "teriyakiChicken": {
+      "name": "Gà Teriyaki",
+      "description": "Thịt gà mềm tẩm sốt teriyaki ngọt và mặn, phục vụ với hạt mè."
+    },
+    "bruschetta": {
+      "name": "Bruschetta",
+      "description": "Bánh mì nướng chà tỏi và phủ cà chua tươi, húng quế và dầu ô liu."
+    },
+    "stuffedMushrooms": {
+      "name": "Nấm Nhồi Phô Mai",
+      "description": "Nấm nhồi phô mai, thảo mộc và vụn bánh mì, nướng hoàn hảo."
+    },
+    "seafoodPestoLemonCreamPizza": {
+      "name": "Pizza Hải Sản Pesto Chanh Kem",
+      "description": "Hải sản sảng khoái kết hợp với pesto tươi và chút kem chanh, mang đến món pizza thơm ngon và sảng khoái."
+    },
+    "crispyFriedChicken": {
+      "name": "Gà Rán Giòn",
+      "description": "Gà chiên vàng được tẩm gia vị hoàn hảo, giòn bên ngoài và mọng nước bên trong."
+    },
+    "spicyGrilledChicken": {
+      "name": "Gà Nướng Cay",
+      "description": "Thịt gà mềm ướp thảo mộc cay và nướng khói hoàn hảo, phục vụ với sốt chấm."
+    },
+    "beefCheeseBurstPizza": {
+      "name": "Pizza Bò Phô Mai Nổ",
+      "description": "Thịt bò mọng nước, phô mai tan chảy dư thừa và hỗn hợp thảo mộc trên đế bánh giòn cho trải nghiệm pizza phong phú và thịnh soạn."
+    },
+    "seafoodAlfredoPasta": {
+      "name": "Mì Hải Sản Alfredo",
+      "description": "Sốt Alfredo béo ngậy với hải sản tươi và mì linguine cho bữa ăn sang trọng."
+    },
+    "penneArrabbiata": {
+      "name": "Mì Penne Arrabbiata",
+      "description": "Sốt cà chua cay với tỏi, ớt và dầu ô liu, trộn với mì penne."
+    },
+    "fettuccineAlfredo": {
+      "name": "Mì Fettuccine Alfredo",
+      "description": "Sốt Alfredo béo ngậy trộn với mì fettuccine và rắc phô mai parmesan."
+    },
+    "bolognesePasta": {
+      "name": "Mì Bolognese",
+      "description": "Sốt cà chua thịt đậm đà phục vụ với mì spaghetti cho món Ý cổ điển thịnh soạn."
+    },
+    "fourCheeseExtravaganzaPizza": {
+      "name": "Pizza Bốn Loại Phô Mai Đặc Biệt",
+      "description": "Sự pha trộn xa hoa của bốn loại phô mai tan chảy hoàn hảo, tạo nên trải nghiệm pizza béo ngậy, phong phú và thỏa mãn."
+    },
+    "pestoPasta": {
+      "name": "Mì Pesto",
+      "description": "Sốt pesto húng quế tươi trộn với mì, hạt thông và phô mai parmesan cho hương vị thơm ngát."
+    },
+    "lemonHerbChicken": {
+      "name": "Gà Thảo Mộc Chanh",
+      "description": "Gà nướng với thảo mộc tươi và lát chanh cho hương vị chua cay thơm ngát."
+    }
+  },
+  "customizeModal": {
+    "addToCart": "Thêm vào giỏ",
+    "chooseBaseOption": "Chọn loại đế",
+    "selectSize": "Chọn kích cỡ",
+    "extraTopping": "Topping thêm",
+    "crustOption": "Loại viền",
+    "traditionBase": "Đế truyền thống",
+    "thinCrispyBase": "Đế mỏng giòn",
+    "noneTopping": "Không",
+    "extraCheese": "Phô mai thêm",
+    "traditionCrust": "Viền truyền thống",
+    "cheeseCrust": "Viền phô mai"
   }
 }

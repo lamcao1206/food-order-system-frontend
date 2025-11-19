@@ -75,5 +75,125 @@
   "success": {
     "title": "Success!",
     "message": "You have ordered successfully."
+  },
+  "products": {
+    "superExtraTopping": "Super Extra Topping",
+    "bbqChickenDrumsticks": {
+      "name": "BBQ Chicken Drumsticks",
+      "description": "Juicy drumsticks smothered in smoky BBQ sauce and grilled to perfection."
+    },
+    "onionRings": {
+      "name": "Onion Rings",
+      "description": "Crispy battered onion rings, golden fried and served with dipping sauce."
+    },
+    "chickenWings": {
+      "name": "Chicken Wings",
+      "description": "Juicy chicken wings tossed in a savory sauce, served with celery sticks."
+    },
+    "seafoodGreenPepperPizza": {
+      "name": "Seafood Green Pepper Pizza",
+      "description": "Fresh seafood topped with green peppers, mozzarella cheese, and a tangy tomato sauce for a delightful burst of flavors."
+    },
+    "seafoodMayonnaisePizza": {
+      "name": "Seafood Mayonnaise Pizza",
+      "description": "A creamy combination of seafood, mayonnaise sauce, and melted cheese, creating a rich and savory taste experience."
+    },
+    "bbqChickenSupremePizza": {
+      "name": "BBQ Chicken Supreme Pizza",
+      "description": "Tender BBQ chicken, fresh vegetables, and premium cheese, drizzled with BBQ sauce for a smoky and satisfying flavor."
+    },
+    "mozzarellaCheeseSticks": {
+      "name": "Mozzarella Cheese Sticks",
+      "description": "Deep-fried mozzarella sticks served with tangy marinara sauce for the ultimate cheesy indulgence."
+    },
+    "veggieDelightPizza": {
+      "name": "Veggie Delight Pizza",
+      "description": "A colorful mix of fresh vegetables, tomato sauce, and melted cheese, delivering a light yet flavorful vegetarian option."
+    },
+    "spaghettiCarbonara": {
+      "name": "Spaghetti Carbonara",
+      "description": "Classic Italian pasta tossed with creamy egg sauce, crispy bacon, and grated parmesan cheese."
+    },
+    "hawaiianPineapplePizza": {
+      "name": "Hawaiian Pineapple Pizza",
+      "description": "Classic ham and juicy pineapple on a cheesy crust, balancing sweet and savory flavors perfectly for a tropical twist."
+    },
+    "garlicBread": {
+      "name": "Garlic Bread",
+      "description": "Crispy golden bread slices topped with garlic butter and parsley — the perfect appetizer to start your meal."
+    },
+    "honeyGlazedChicken": {
+      "name": "Honey Glazed Chicken",
+      "description": "Grilled chicken with a sweet and sticky honey glaze, juicy and flavorful."
+    },
+    "teriyakiChicken": {
+      "name": "Teriyaki Chicken",
+      "description": "Tender chicken glazed with sweet and savory teriyaki sauce, served with sesame seeds."
+    },
+    "bruschetta": {
+      "name": "Bruschetta",
+      "description": "Grilled bread rubbed with garlic and topped with fresh tomatoes, basil, and olive oil."
+    },
+    "stuffedMushrooms": {
+      "name": "Stuffed Mushrooms",
+      "description": "Mushrooms filled with cheese, herbs, and breadcrumbs, baked to perfection."
+    },
+    "seafoodPestoLemonCreamPizza": {
+      "name": "Seafood Pesto Lemon Cream Pizza",
+      "description": "Zesty seafood paired with fresh pesto and a hint of lemon cream, offering a refreshing and aromatic pizza delight."
+    },
+    "crispyFriedChicken": {
+      "name": "Crispy Fried Chicken",
+      "description": "Golden-fried chicken seasoned to perfection, crispy on the outside and juicy inside."
+    },
+    "spicyGrilledChicken": {
+      "name": "Spicy Grilled Chicken",
+      "description": "Tender chicken marinated in spicy herbs and grilled to smoky perfection, served with dipping sauce."
+    },
+    "beefCheeseBurstPizza": {
+      "name": "Beef Cheese Burst Pizza",
+      "description": "Juicy beef, extra melted cheese, and a blend of herbs on a crispy crust for a rich and hearty pizza experience."
+    },
+    "seafoodAlfredoPasta": {
+      "name": "Seafood Alfredo Pasta",
+      "description": "Rich and creamy Alfredo sauce with fresh seafood and linguine pasta for a luxurious meal."
+    },
+    "penneArrabbiata": {
+      "name": "Penne Arrabbiata",
+      "description": "Spicy tomato sauce with garlic, chili, and olive oil, tossed with penne pasta."
+    },
+    "fettuccineAlfredo": {
+      "name": "Fettuccine Alfredo",
+      "description": "Creamy Alfredo sauce mixed with fettuccine pasta and a sprinkle of parmesan."
+    },
+    "bolognesePasta": {
+      "name": "Bolognese Pasta",
+      "description": "Rich meaty tomato sauce served with spaghetti for a hearty and classic Italian dish."
+    },
+    "fourCheeseExtravaganzaPizza": {
+      "name": "Four Cheese Extravaganza Pizza",
+      "description": "A decadent blend of four cheeses melted to perfection, creating a creamy, rich, and indulgent pizza experience."
+    },
+    "pestoPasta": {
+      "name": "Pesto Pasta",
+      "description": "Fresh basil pesto sauce mixed with pasta, pine nuts, and parmesan cheese for a fragrant taste."
+    },
+    "lemonHerbChicken": {
+      "name": "Lemon Herb Chicken",
+      "description": "Chicken roasted with fresh herbs and lemon slices for a zesty, aromatic flavor."
+    }
+  },
+  "customizeModal": {
+    "addToCart": "Add to cart",
+    "chooseBaseOption": "Choose base option",
+    "selectSize": "Select size",
+    "extraTopping": "Extra topping",
+    "crustOption": "Crust option",
+    "traditionBase": "Tradition base",
+    "thinCrispyBase": "Thin and crispy base",
+    "noneTopping": "None",
+    "extraCheese": "Extra cheese",
+    "traditionCrust": "Tradition crust",
+    "cheeseCrust": "Cheese crust"
   }
 }

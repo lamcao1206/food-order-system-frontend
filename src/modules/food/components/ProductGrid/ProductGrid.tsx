@@ -1,4 +1,5 @@
 import { Box, Stack, Text, Grid } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 import classes from "./ProductGrid.module.scss";
 import { ProductCard } from "../ProductCard";
 import PizzaSausage from "@/assets/jpg/PizzaSausage.jpg";
@@ -20,39 +21,36 @@ import StuffedMushroom from "@/assets/jpg/StuffedMushroom.jpeg";
 import mozzarella from "@/assets/jpg/mozzarella.jpg";
 
 import { FoodCategory } from "@/constants/food";
-const foodProducts = [
+
+const getProductData = (t: any) => [
   {
     id: 25,
-    name: "BBQ Chicken Drumsticks",
-    description:
-      "Juicy drumsticks smothered in smoky BBQ sauce and grilled to perfection.",
+    name: t('products.bbqChickenDrumsticks.name'),
+    description: t('products.bbqChickenDrumsticks.description'),
     type: { price: 175 },
     image: Chicken1,
     category: FoodCategory.CHICKEN,
   },
   {
     id: 13,
-    name: "Onion Rings",
-    description:
-      "Crispy battered onion rings, golden fried and served with dipping sauce.",
+    name: t('products.onionRings.name'),
+    description: t('products.onionRings.description'),
     type: { price: 100 },
     image: OnionRings,
     category: FoodCategory.APPETIZER,
   },
   {
     id: 14,
-    name: "Chicken Wings",
-    description:
-      "Juicy chicken wings tossed in a savory sauce, served with celery sticks.",
+    name: t('products.chickenWings.name'),
+    description: t('products.chickenWings.description'),
     type: { price: 130 },
     image: ChickenWing,
     category: FoodCategory.APPETIZER,
   },
   {
     id: 1,
-    name: "Seafood Green Pepper Pizza",
-    description:
-      "Fresh seafood topped with green peppers, mozzarella cheese, and a tangy tomato sauce for a delightful burst of flavors.",
+    name: t('products.seafoodGreenPepperPizza.name'),
+    description: t('products.seafoodGreenPepperPizza.description'),
     type: [
       { size: 9, price: 230 },
       { size: 12, price: 280 },
@@ -62,9 +60,8 @@ const foodProducts = [
   },
   {
     id: 2,
-    name: "Seafood Mayonnaise Pizza",
-    description:
-      "A creamy combination of seafood, mayonnaise sauce, and melted cheese, creating a rich and savory taste experience.",
+    name: t('products.seafoodMayonnaisePizza.name'),
+    description: t('products.seafoodMayonnaisePizza.description'),
     type: [
       { size: 9, price: 240 },
       { size: 12, price: 290 },
@@ -74,9 +71,8 @@ const foodProducts = [
   },
   {
     id: 5,
-    name: "BBQ Chicken Supreme Pizza",
-    description:
-      "Tender BBQ chicken, fresh vegetables, and premium cheese, drizzled with BBQ sauce for a smoky and satisfying flavor.",
+    name: t('products.bbqChickenSupremePizza.name'),
+    description: t('products.bbqChickenSupremePizza.description'),
     type: [
       { size: 9, price: 270 },
       { size: 12, price: 320 },
@@ -86,18 +82,16 @@ const foodProducts = [
   },
   {
     id: 10,
-    name: "Mozzarella Cheese Sticks",
-    description:
-      "Deep-fried mozzarella sticks served with tangy marinara sauce for the ultimate cheesy indulgence.",
+    name: t('products.mozzarellaCheeseSticks.name'),
+    description: t('products.mozzarellaCheeseSticks.description'),
     type: { price: 120 },
     image: mozzarella,
     category: FoodCategory.APPETIZER,
   },
   {
     id: 6,
-    name: "Veggie Delight Pizza",
-    description:
-      "A colorful mix of fresh vegetables, tomato sauce, and melted cheese, delivering a light yet flavorful vegetarian option.",
+    name: t('products.veggieDelightPizza.name'),
+    description: t('products.veggieDelightPizza.description'),
     type: [
       { size: 9, price: 220 },
       { size: 12, price: 270 },
@@ -107,18 +101,16 @@ const foodProducts = [
   },
   {
     id: 15,
-    name: "Spaghetti Carbonara",
-    description:
-      "Classic Italian pasta tossed with creamy egg sauce, crispy bacon, and grated parmesan cheese.",
+    name: t('products.spaghettiCarbonara.name'),
+    description: t('products.spaghettiCarbonara.description'),
     type: { price: 180 },
     image: Pasta1,
     category: FoodCategory.PASTA,
   },
   {
     id: 7,
-    name: "Hawaiian Pineapple Pizza",
-    description:
-      "Classic ham and juicy pineapple on a cheesy crust, balancing sweet and savory flavors perfectly for a tropical twist.",
+    name: t('products.hawaiianPineapplePizza.name'),
+    description: t('products.hawaiianPineapplePizza.description'),
     type: [
       { size: 9, price: 245 },
       { size: 12, price: 295 },
@@ -128,54 +120,48 @@ const foodProducts = [
   },
   {
     id: 9,
-    name: "Garlic Bread",
-    description:
-      "Crispy golden bread slices topped with garlic butter and parsley — the perfect appetizer to start your meal.",
+    name: t('products.garlicBread.name'),
+    description: t('products.garlicBread.description'),
     type: { price: 90 },
     image: GarlicBread,
     category: FoodCategory.APPETIZER,
   },
   {
     id: 23,
-    name: "Honey Glazed Chicken",
-    description:
-      "Grilled chicken with a sweet and sticky honey glaze, juicy and flavorful.",
+    name: t('products.honeyGlazedChicken.name'),
+    description: t('products.honeyGlazedChicken.description'),
     type: { price: 170 },
     image: Chicken3,
     category: FoodCategory.CHICKEN,
   },
   {
     id: 26,
-    name: "Teriyaki Chicken",
-    description:
-      "Tender chicken glazed with sweet and savory teriyaki sauce, served with sesame seeds.",
+    name: t('products.teriyakiChicken.name'),
+    description: t('products.teriyakiChicken.description'),
     type: { price: 180 },
     image: Chicken3,
     category: FoodCategory.CHICKEN,
   },
   {
     id: 11,
-    name: "Bruschetta",
-    description:
-      "Grilled bread rubbed with garlic and topped with fresh tomatoes, basil, and olive oil.",
+    name: t('products.bruschetta.name'),
+    description: t('products.bruschetta.description'),
     type: { price: 95 },
     image: Bruschetta,
     category: FoodCategory.APPETIZER,
   },
   {
     id: 12,
-    name: "Stuffed Mushrooms",
-    description:
-      "Mushrooms filled with cheese, herbs, and breadcrumbs, baked to perfection.",
+    name: t('products.stuffedMushrooms.name'),
+    description: t('products.stuffedMushrooms.description'),
     type: { price: 110 },
     image: StuffedMushroom,
     category: FoodCategory.APPETIZER,
   },
   {
     id: 3,
-    name: "Seafood Pesto Lemon Cream Pizza",
-    description:
-      "Zesty seafood paired with fresh pesto and a hint of lemon cream, offering a refreshing and aromatic pizza delight.",
+    name: t('products.seafoodPestoLemonCreamPizza.name'),
+    description: t('products.seafoodPestoLemonCreamPizza.description'),
     type: [
       { size: 9, price: 250 },
       { size: 12, price: 300 },
@@ -185,27 +171,24 @@ const foodProducts = [
   },
   {
     id: 21,
-    name: "Crispy Fried Chicken",
-    description:
-      "Golden-fried chicken seasoned to perfection, crispy on the outside and juicy inside.",
+    name: t('products.crispyFriedChicken.name'),
+    description: t('products.crispyFriedChicken.description'),
     type: { price: 150 },
     image: Chicken1,
     category: FoodCategory.CHICKEN,
   },
   {
     id: 22,
-    name: "Spicy Grilled Chicken",
-    description:
-      "Tender chicken marinated in spicy herbs and grilled to smoky perfection, served with dipping sauce.",
+    name: t('products.spicyGrilledChicken.name'),
+    description: t('products.spicyGrilledChicken.description'),
     type: { price: 165 },
     image: Chicken2,
     category: FoodCategory.CHICKEN,
   },
   {
     id: 4,
-    name: "Beef Cheese Burst Pizza",
-    description:
-      "Juicy beef, extra melted cheese, and a blend of herbs on a crispy crust for a rich and hearty pizza experience.",
+    name: t('products.beefCheeseBurstPizza.name'),
+    description: t('products.beefCheeseBurstPizza.description'),
     type: [
       { size: 9, price: 260 },
       { size: 12, price: 310 },
@@ -215,45 +198,40 @@ const foodProducts = [
   },
   {
     id: 16,
-    name: "Seafood Alfredo Pasta",
-    description:
-      "Rich and creamy Alfredo sauce with fresh seafood and linguine pasta for a luxurious meal.",
+    name: t('products.seafoodAlfredoPasta.name'),
+    description: t('products.seafoodAlfredoPasta.description'),
     type: { price: 210 },
     image: Pasta2,
     category: FoodCategory.PASTA,
   },
   {
     id: 17,
-    name: "Penne Arrabbiata",
-    description:
-      "Spicy tomato sauce with garlic, chili, and olive oil, tossed with penne pasta.",
+    name: t('products.penneArrabbiata.name'),
+    description: t('products.penneArrabbiata.description'),
     type: { price: 170 },
     image: Pasta3,
     category: FoodCategory.PASTA,
   },
   {
     id: 18,
-    name: "Fettuccine Alfredo",
-    description:
-      "Creamy Alfredo sauce mixed with fettuccine pasta and a sprinkle of parmesan.",
+    name: t('products.fettuccineAlfredo.name'),
+    description: t('products.fettuccineAlfredo.description'),
     type: { price: 200 },
     image: Pasta4,
     category: FoodCategory.PASTA,
   },
   {
     id: 19,
-    name: "Bolognese Pasta",
-    description:
-      "Rich meaty tomato sauce served with spaghetti for a hearty and classic Italian dish.",
+    name: t('products.bolognesePasta.name'),
+    description: t('products.bolognesePasta.description'),
     type: { price: 190 },
     image: Pasta2,
     category: FoodCategory.PASTA,
   },
   {
     id: 8,
-    name: "Four Cheese Extravaganza Pizza",
-    description:
-      "A decadent blend of four cheeses melted to perfection, creating a creamy, rich, and indulgent pizza experience.",
+    name: t('products.fourCheeseExtravaganzaPizza.name'),
+    description: t('products.fourCheeseExtravaganzaPizza.description'),
     type: [
       { size: 9, price: 255 },
       { size: 12, price: 305 },
@@ -263,18 +241,16 @@ const foodProducts = [
   },
   {
     id: 20,
-    name: "Pesto Pasta",
-    description:
-      "Fresh basil pesto sauce mixed with pasta, pine nuts, and parmesan cheese for a fragrant taste.",
+    name: t('products.pestoPasta.name'),
+    description: t('products.pestoPasta.description'),
     type: { price: 185 },
     image: Pasta4,
     category: FoodCategory.PASTA,
   },
   {
     id: 24,
-    name: "Lemon Herb Chicken",
-    description:
-      "Chicken roasted with fresh herbs and lemon slices for a zesty, aromatic flavor.",
+    name: t('products.lemonHerbChicken.name'),
+    description: t('products.lemonHerbChicken.description'),
     type: { price: 160 },
     image: Chicken4,
     category: FoodCategory.CHICKEN,
@@ -289,6 +265,9 @@ interface ProductGridProps {
 }
 
 const ProductGrid = ({ category, searchQuery }: ProductGridProps) => {
+  const { t } = useTranslation('food');
+  const foodProducts = getProductData(t);
+  
   let products = [...foodProducts];
   console.log(category);
   if (category) {
@@ -313,7 +292,7 @@ const ProductGrid = ({ category, searchQuery }: ProductGridProps) => {
             mb="md"
             style={{ color: "#343a40" }}
           >
-            Super Extra Topping
+            {t('products.superExtraTopping')}
           </Text>
         )}
 
