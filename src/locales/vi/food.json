@@ -4,7 +4,8 @@
     "pizza": "PIZZA",
     "pasta": "PASTA",
     "appetizer": "KHAI VỊ",
-    "chicken": "GÀ"
+    "chicken": "GÀ",
+    "placeholder": "Tìm kiếm món ăn..."
   },
   "orderDetail": {
     "title": "Chi tiết đơn hàng của bạn",

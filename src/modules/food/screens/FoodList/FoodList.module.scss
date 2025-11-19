@@ -25,6 +25,10 @@
 
 .subNavPill {
   margin-bottom: rem(20);
+  display: flex;
+  align-items: center;
+  gap: rem(10);
+  
   .pillButton {
     border-radius: rem(20);
     padding: rem(6) rem(14);
@@ -46,6 +50,44 @@
     &:hover {
       background-color: #e9ecef;
     }
+  }
+}
+
+.searchInput {
+  margin-left: auto;
+  min-width: rem(280);
+  
+  input {
+    border-radius: rem(24);
+    border: 2px solid #e9ecef;
+    padding: rem(8) rem(16);
+    font-size: rem(14);
+    transition: all 0.3s ease;
+    
+    &:focus {
+      border-color: #e53935;
+      box-shadow: 0 0 0 3px rgba(229, 57, 53, 0.1);
+    }
+    
+    &::placeholder {
+      color: #adb5bd;
+    }
+  }
+}
+
+.searchButton {
+  background-color: #e53935;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #c62828;
+    transform: scale(1.05);
+  }
+  
+  &:active {
+    transform: scale(0.95);
   }
 }
 

@@ -1,4 +1,12 @@
-import { Button, Group, Text, Container, Burger, Drawer, Stack } from "@mantine/core";
+import {
+  Button,
+  Group,
+  Text,
+  Container,
+  Burger,
+  Drawer,
+  Stack,
+} from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -12,7 +20,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
 
 export function NavbarLanding() {
-  const { t } = useTranslation(['landing', 'auth']);
+  const { t } = useTranslation(["landing", "auth"]);
   const navigate = useNavigate();
   const user = useUserStore((state) => state.user);
   const clearUser = useUserStore((state) => state.actions.clearUser);
@@ -57,41 +65,37 @@ export function NavbarLanding() {
                 PizzaHub
               </Text>
             </Group>
-            <Group visibleFrom="sm" className={classes.navLinks}>
-              <Link to="/food/list">
-                {t('landing:navbar.menu')}
-              </Link>
-              <Link to="/food/order">
-                {t('landing:navbar.order')}
-              </Link>
-              <Link to="/food/history">
-                {t('landing:navbar.history')}
-              </Link>
-            </Group>
+            {user && (
+              <Group visibleFrom="sm" className={classes.navLinks}>
+                <Link to="/food/list">{t("landing:navbar.menu")}</Link>
+                <Link to="/food/order">{t("landing:navbar.order")}</Link>
+                <Link to="/food/history">{t("landing:navbar.history")}</Link>
+              </Group>
+            )}
             <Group visibleFrom="sm" className={classes.desktopButtons}>
               <LanguageSwitcher />
               {user ? (
-                <Button 
-                  variant="outline" 
+                <Button
+                  variant="outline"
                   onClick={handleSignOut}
                   className={classes.signInButton}
                 >
-                  {t('auth:signOut')}
+                  {t("auth:signOut")}
                 </Button>
               ) : (
                 <>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     onClick={handleSignInClick}
                     className={classes.signInButton}
                   >
-                    {t('landing:navbar.signIn')}
+                    {t("landing:navbar.signIn")}
                   </Button>
-                  <Button 
+                  <Button
                     onClick={handleSignUpClick}
                     className={classes.signUpButton}
                   >
-                    {t('landing:navbar.signUp')}
+                    {t("landing:navbar.signUp")}
                   </Button>
                 </>
               )}
@@ -112,7 +116,7 @@ export function NavbarLanding() {
       <Drawer
         opened={opened}
         onClose={close}
-        title={t('landing:navbar.mobileMenu')}
+        title={t("landing:navbar.mobileMenu")}
         size="sm"
         styles={{
           title: {
@@ -127,33 +131,33 @@ export function NavbarLanding() {
             <LanguageSwitcher />
           </Group>
           {user ? (
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               fullWidth
               size="md"
               onClick={handleSignOut}
               className={classes.mobileSignInButton}
             >
-              {t('auth:signOut')}
+              {t("auth:signOut")}
             </Button>
           ) : (
             <>
-              <Button 
-                variant="outline" 
+              <Button
+                variant="outline"
                 fullWidth
                 size="md"
                 onClick={handleSignInClick}
                 className={classes.mobileSignInButton}
               >
-                {t('landing:navbar.signIn')}
+                {t("landing:navbar.signIn")}
               </Button>
-              <Button 
+              <Button
                 fullWidth
                 size="md"
                 onClick={handleSignUpClick}
                 className={classes.mobileSignUpButton}
               >
-                {t('landing:navbar.signUp')}
+                {t("landing:navbar.signUp")}
               </Button>
             </>
           )}

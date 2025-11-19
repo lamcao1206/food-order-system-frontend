@@ -4,7 +4,8 @@
     "pizza": "PIZZA",
     "pasta": "PASTA",
     "appetizer": "APPETIZER",
-    "chicken": "CHICKEN"
+    "chicken": "CHICKEN",
+    "placeholder": "Search food..."
   },
   "orderDetail": {
     "title": "Your Order Detail",

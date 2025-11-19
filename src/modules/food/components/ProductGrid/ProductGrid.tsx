@@ -285,13 +285,21 @@ const foodProducts = [
 
 interface ProductGridProps {
   category: string;
+  searchQuery?: string;
 }
 
-const ProductGrid = ({ category }: ProductGridProps) => {
+const ProductGrid = ({ category, searchQuery }: ProductGridProps) => {
   let products = [...foodProducts];
   console.log(category);
   if (category) {
     products = products.filter((product) => product.category === category);
+  }
+  
+  if (searchQuery) {
+    products = products.filter((product) => 
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.description.toLowerCase().includes(searchQuery.toLowerCase())
+    );
   }
 
   return (

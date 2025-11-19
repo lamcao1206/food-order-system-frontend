@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Container, Group, Button, Box } from "@mantine/core";
+import { Container, Group, Button, Box, TextInput, ActionIcon } from "@mantine/core";
+import { IconSearch } from '@tabler/icons-react';
 import { useTranslation } from "react-i18next";
 import { OrderDetail } from "../../components/OrderDetail";
 import classes from "./FoodList.module.scss";
@@ -9,6 +10,8 @@ import { NavbarLanding } from "../../../landing/components/Navbar/Navbar";
 const FoodList = () => {
   const { t } = useTranslation('food');
   const [selectedCategory, setSelectedCategory] = useState("all");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
   const subNavItems = [
     { label: "all", key: "all" },
@@ -41,9 +44,33 @@ const FoodList = () => {
                 {t(`categories.${item.key}`)}
               </Button>
             ))}
+            
+            <TextInput
+              placeholder={t('categories.placeholder')}
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.currentTarget.value)}
+              size="sm"
+              className={classes.searchInput}
+              rightSection={
+                <ActionIcon
+                  variant="filled"
+                  color="red"
+                  size="md"
+                  onClick={() => setSearchQuery(searchInput)}
+                  className={classes.searchButton}
+                >
+                  <IconSearch size={18} />
+                </ActionIcon>
+              }
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  setSearchQuery(searchInput);
+                }
+              }}
+            />
           </Group>
 
-          <ProductGrid category={selectedCategory === 'all'? '': selectedCategory} />
+          <ProductGrid category={selectedCategory === 'all'? '': selectedCategory} searchQuery={searchQuery} />
         </Box>
 
         <OrderDetail />
