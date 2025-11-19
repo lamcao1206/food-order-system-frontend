@@ -1,0 +1,78 @@
+{
+  "categories": {
+    "all": "ALL",
+    "pizza": "PIZZA",
+    "pasta": "PASTA",
+    "appetizer": "APPETIZER",
+    "chicken": "CHICKEN"
+  },
+  "orderDetail": {
+    "title": "Your Order Detail",
+    "dishes": "Dishes",
+    "dish": "Dish",
+    "emptyCart": "Your cart is empty"
+  },
+  "orderItems": {
+    "enterVoucherCode": "Enter E-voucher code",
+    "apply": "Apply",
+    "promotionDiscount": "Promotion Discount",
+    "selectPromotionDiscount": "SELECT PROMOTION DISCOUNT",
+    "applyDiscount": "Apply Discount",
+    "inch": "inch",
+    "size": "Size",
+    "cheese": "Cheese",
+    "crust": "Crust",
+    "cannotApplyDiscount": "Cannot apply discount",
+    "orderMustExceed": "Order must exceed",
+    "discountApplied": "Discount applied",
+    "youHaveApplied": "You have applied",
+    "discount": "discount",
+    "applySuccessful": "Apply successful!",
+    "youHaveUsedVouchers": "You have used vouchers successfully",
+    "applyFailed": "Apply failed",
+    "youHaveUsedVouchersBefore": "You have used vouchers before",
+    "invalidVoucher": "Invalid voucher",
+    "voucherExpired": "Your voucher has been expired or incorrect"
+  },
+  "orderSummary": {
+    "total": "Total",
+    "vouchersDiscount": "Vouchers Discount",
+    "deliveryFee": "Delivery Fee",
+    "completeOrder": "COMPLETE ORDER"
+  },
+  "orderCheckout": {
+    "orderSummary": "Order Summary",
+    "orderDate": "Order Date",
+    "notAvailable": "Not available",
+    "paymentMethod": "Payment Method",
+    "notSelected": "Not selected",
+    "shippingAddress": "Shipping Address",
+    "noAddressProvided": "No address provided",
+    "orderItems": "Order Items",
+    "quantity": "Quantity",
+    "noItemsInOrder": "No items in order.",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "voucher": "Voucher",
+    "deliveryFee": "Delivery fee",
+    "total": "Total",
+    "youveEarned": "You've earned",
+    "pointsFromThisOrder": "points from this order!",
+    "youHaveNotOrderedYet": "You have not ordered yet"
+  },
+  "orderHistory": {
+    "order": "Order",
+    "pending": "PENDING",
+    "completed": "COMPLETED",
+    "canceled": "CANCELED",
+    "dishes": "Dishes",
+    "discount": "Discount",
+    "voucher": "Voucher",
+    "deliveryFee": "Delivery fee",
+    "total": "Total"
+  },
+  "success": {
+    "title": "Success!",
+    "message": "You have ordered successfully."
+  }
+}

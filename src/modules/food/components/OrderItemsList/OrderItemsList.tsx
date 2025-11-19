@@ -9,6 +9,7 @@ import {
   Modal,
 } from "@mantine/core";
 import { IconCircleDot, IconGift, IconTrash } from "@tabler/icons-react";
+import { useTranslation } from "react-i18next";
 import classes from "./OrderItemsList.module.scss";
 import type { CartItemInput } from "@/interfaces/food.interface";
 import useCartStore from "@/lib/zustand/stores/useCartStore";
@@ -19,6 +20,7 @@ import { notifications } from "@mantine/notifications";
 import { discounts, vouchers } from "@/constants/food";
 
 const OrderItemsList = () => {
+  const { t } = useTranslation('food');
   const [code, setCode] = useState("");
   const cartItems: CartItemInput[] = useCartStore(
     (state: IFoodState) => state.cart
@@ -38,8 +40,8 @@ const OrderItemsList = () => {
 
     if (totalAmount < discountObj.available) {
       notifications.show({
-        title: "Cannot apply discount",
-        message: `Order must exceed ${(
+        title: t('orderItems.cannotApplyDiscount'),
+        message: `${t('orderItems.orderMustExceed')} ${(
           discountObj.available * 1000
         ).toLocaleString("vi-VN")}đ`,
         color: "red",
@@ -51,8 +53,8 @@ const OrderItemsList = () => {
 
     setDiscount(discountObj.id);
     notifications.show({
-      title: "Discount applied",
-      message: `You have applied ${discountObj.value} discount`,
+      title: t('orderItems.discountApplied'),
+      message: `${t('orderItems.youHaveApplied')} ${discountObj.value} ${t('orderItems.discount')}`,
       color: "green",
       position: "top-right",
       autoClose: 3000,
@@ -75,16 +77,16 @@ const OrderItemsList = () => {
       const result = addVoucher(voucherValue);
       if (result)
         notifications.show({
-          title: "Apply successful!",
-          message: "You have used vouchers successfully",
+          title: t('orderItems.applySuccessful'),
+          message: t('orderItems.youHaveUsedVouchers'),
           color: "green",
           position: "top-right",
           autoClose: 3000,
         });
       else
         notifications.show({
-          title: "Apply failed",
-          message: "You have used vouchers before",
+          title: t('orderItems.applyFailed'),
+          message: t('orderItems.youHaveUsedVouchersBefore'),
           color: "red",
           position: "top-right",
           autoClose: 3000,
@@ -92,8 +94,8 @@ const OrderItemsList = () => {
       setCode("");
     } else {
       notifications.show({
-          title: "Invalid voucher",
-          message: "Your voucher has been expired or incorrect",
+          title: t('orderItems.invalidVoucher'),
+          message: t('orderItems.voucherExpired'),
           color: "red",
           position: "top-right",
           autoClose: 3000,
@@ -109,8 +111,8 @@ const OrderItemsList = () => {
           alignItems: "center",
         }}
       >
-        <Text className={classes.summaryTitle}>Your Order Detail</Text>
-        <Text size="md">{cartItems.length} Dishes</Text>
+        <Text className={classes.summaryTitle}>{t('orderDetail.title')}</Text>
+        <Text size="md">{cartItems.length} {cartItems.length === 1 ? t('orderDetail.dish') : t('orderDetail.dishes')}</Text>
       </Group>
 
       <Group
@@ -122,7 +124,7 @@ const OrderItemsList = () => {
         }}
       >
         <TextInput
-          placeholder="Enter E-voucher code"
+          placeholder={t('orderItems.enterVoucherCode')}
           style={{ flexGrow: 1 }}
           value={code}
           styles={{ input: { border: "none", paddingLeft: "5px" } }}
@@ -133,7 +135,7 @@ const OrderItemsList = () => {
           style={{ backgroundColor: "#007bff" }}
           onClick={handleApply}
         >
-          Apply
+          {t('orderItems.apply')}
         </Button>
       </Group>
       <Stack>
@@ -176,18 +178,18 @@ const OrderItemsList = () => {
                       )}
                       {cartItem.size && (
                         <Text size="xs" c="dimmed">
-                          {cartItem.size} inch
+                          {cartItem.size} {t('orderItems.inch')}
                         </Text>
                       )}
 
                       {cartItem.additionalCheese && (
                         <Text size="xs" c="dimmed">
-                          {cartItem.additionalCheese}
+                          {t('orderItems.cheese')}: {cartItem.additionalCheese}
                         </Text>
                       )}
                       {cartItem.additionalCrust && (
                         <Text size="xs" c="dimmed">
-                          {cartItem.additionalCrust}
+                          {t('orderItems.crust')}: {cartItem.additionalCrust}
                         </Text>
                       )}
                     </Stack>
@@ -234,7 +236,7 @@ const OrderItemsList = () => {
         >
           <IconGift size={16} color="#e53935" />
           <Text size="sm" fw={600} style={{ color: "#e53935", flexGrow: 1 }}>
-            Promotion Discount
+            {t('orderItems.promotionDiscount')}
           </Text>
           <IconCircleDot size={16} color="#e53935" />
         </Group>
@@ -242,7 +244,7 @@ const OrderItemsList = () => {
       <Modal
         opened={modalOpen}
         onClose={() => setModalOpen(false)}
-        title="SELECT PROMOTION DISCOUNT"
+        title={t('orderItems.selectPromotionDiscount')}
         styles={{
           title: {
             color: "#e53935",
@@ -317,7 +319,7 @@ const OrderItemsList = () => {
           onClick={handleApplyDiscount}
           disabled={!selectedDiscount}
         >
-          Apply Discount
+          {t('orderItems.applyDiscount')}
         </Button>
       </Modal>
     </Stack>

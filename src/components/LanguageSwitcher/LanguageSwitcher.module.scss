@@ -1,0 +1,36 @@
+@import '../../styles/__mantine.scss';
+
+.languageSwitcher {
+  cursor: pointer;
+}
+
+.activeButton {
+  background: linear-gradient(135deg, #ff6b35, #f7931e);
+  border: none;
+  color: white;
+  font-weight: 600;
+  min-width: rem(50);
+  height: rem(36);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background: linear-gradient(135deg, #e55a2b, #e8821a);
+    transform: translateY(-1px);
+  }
+}
+
+.inactiveButton {
+  border-color: #ff6b35;
+  color: #ff6b35;
+  font-weight: 600;
+  min-width: rem(50);
+  height: rem(36);
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #ff6b35;
+    color: white;
+    transform: translateY(-1px);
+  }
+}
+

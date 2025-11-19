@@ -8,9 +8,11 @@ import {
   Title,
   Paper,
 } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 import useOrderStore from "@/lib/zustand/stores/useOrderStore";
 import NoItemFound from "@/assets/jpg/no_item_found.jpg";
 const OrderCheckOut = () => {
+  const { t } = useTranslation('food');
   const cart = useOrderStore((state) => state.cart ?? []);
   const discount = useOrderStore((state) => state.discount ?? null);
   const extraVoucher = useOrderStore((state) => state.extraVoucher ?? null);
@@ -36,7 +38,7 @@ const OrderCheckOut = () => {
     <Stack align="center" mt="lg">
       <Card shadow="sm" radius="md" withBorder style={{ width: "600px" }}>
         <Title order={3} ta="center" c="blue" fw={700}>
-          Order Summary
+          {t('orderCheckout.orderSummary')}
         </Title>
 
         <Divider my="md" />
@@ -45,19 +47,19 @@ const OrderCheckOut = () => {
           <>
             <Stack gap="xs">
               <Group justify="space-between">
-                <Text fw={500}>Order Date:</Text>
-                <Text c="dimmed">{orderDate || "Not available"}</Text>
+                <Text fw={500}>{t('orderCheckout.orderDate')}:</Text>
+                <Text c="dimmed">{orderDate || t('orderCheckout.notAvailable')}</Text>
               </Group>
 
               <Group justify="space-between">
-                <Text fw={500}>Payment Method:</Text>
-                <Text c="dimmed">{paymentMethod || "Not selected"}</Text>
+                <Text fw={500}>{t('orderCheckout.paymentMethod')}:</Text>
+                <Text c="dimmed">{paymentMethod || t('orderCheckout.notSelected')}</Text>
               </Group>
 
               <Group justify="space-between" align="flex-start">
-                <Text fw={500}>Shipping Address:</Text>
+                <Text fw={500}>{t('orderCheckout.shippingAddress')}:</Text>
                 <Text c="dimmed" style={{ maxWidth: "300px" }}>
-                  {address || "No address provided"}
+                  {address || t('orderCheckout.noAddressProvided')}
                 </Text>
               </Group>
             </Stack>
@@ -65,7 +67,7 @@ const OrderCheckOut = () => {
             <Divider my="md" />
 
             <Title order={5} fw={600}>
-              Order Items
+              {t('orderCheckout.orderItems')}
             </Title>
             <ScrollArea h={200} type="auto" offsetScrollbars>
               <Stack gap="xs" mt="xs">
@@ -82,7 +84,7 @@ const OrderCheckOut = () => {
                       <Stack gap={2}>
                         <Text fw={500}>{item.name}</Text>
                         <Text size="sm" c="dimmed">
-                          Quantity: {item.quantity}
+                          {t('orderCheckout.quantity')}: {item.quantity}
                         </Text>
                       </Stack>
                       <Text fw={500}>
@@ -92,7 +94,7 @@ const OrderCheckOut = () => {
                   ))
                 ) : (
                   <Text c="dimmed" ta="center">
-                    No items in order.
+                    {t('orderCheckout.noItemsInOrder')}
                   </Text>
                 )}
               </Stack>
@@ -102,12 +104,12 @@ const OrderCheckOut = () => {
 
             <Stack gap={6}>
               <Group justify="space-between">
-                <Text fw={500}>Subtotal:</Text>
+                <Text fw={500}>{t('orderCheckout.subtotal')}:</Text>
                 <Text>{totalAmount.toLocaleString("vi-VN")}đ</Text>
               </Group>
 
               <Group justify="space-between">
-                <Text fw={500}>Discount:</Text>
+                <Text fw={500}>{t('orderCheckout.discount')}:</Text>
                 <Text c="red">
                   {discountValue > 0
                     ? `-${discountValue.toLocaleString("vi-VN")}đ`
@@ -116,7 +118,7 @@ const OrderCheckOut = () => {
               </Group>
 
               <Group justify="space-between">
-                <Text fw={500}>Voucher:</Text>
+                <Text fw={500}>{t('orderCheckout.voucher')}:</Text>
                 <Text c="red">
                   {voucherValue > 0
                     ? `-${voucherValue.toLocaleString("vi-VN")}đ`
@@ -124,7 +126,7 @@ const OrderCheckOut = () => {
                 </Text>
               </Group>
               <Group justify="space-between">
-                <Text fw={500}>Delivery fee:</Text>
+                <Text fw={500}>{t('orderCheckout.deliveryFee')}:</Text>
                 <Text>
                   {deliveryValue > 0
                     ? `${deliveryValue.toLocaleString("vi-VN")}đ`
@@ -136,7 +138,7 @@ const OrderCheckOut = () => {
 
               <Group justify="space-between">
                 <Text fw={700} size="lg">
-                  Total:
+                  {t('orderCheckout.total')}:
                 </Text>
                 <Text fw={700} size="lg" c="blue">
                   {finalAmount.toLocaleString("vi-VN")}đ
@@ -156,11 +158,11 @@ const OrderCheckOut = () => {
               }}
             >
               <Text fw={600}>
-                🎉 You’ve earned{" "}
+                🎉 {t('orderCheckout.youveEarned')}{" "}
                 <Text span c="blue" fw={700}>
                   {loyaltyPoints}
                 </Text>{" "}
-                points from this order!
+                {t('orderCheckout.pointsFromThisOrder')}
               </Text>
             </Paper>
           </>
@@ -172,7 +174,7 @@ const OrderCheckOut = () => {
               style={{ width: "60%", height: "60%", objectFit: "cover" }}
             />
             <Text fw={600} style={{fontSize: "24px"}}>
-              You have not ordered yet
+              {t('orderCheckout.youHaveNotOrderedYet')}
             </Text>
           </Stack>
         )}

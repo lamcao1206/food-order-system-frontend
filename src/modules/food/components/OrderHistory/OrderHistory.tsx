@@ -1,4 +1,5 @@
 import { Card, Text, Group, Divider, Badge } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 import classes from "./OrderHistory.module.scss";
 import { OrderStatus } from "@/constants/food";
 import useOrderStore from "@/lib/zustand/stores/useOrderStore";
@@ -70,6 +71,7 @@ const ordersHistory = [
   },
 ];
 export default function OrderHistory() {
+  const { t } = useTranslation('food');
   const currentCart = useOrderStore((state) => state.cart ?? []);
   const orderDate = useOrderStore((state) => state.orderDate);
   const deliveryFee = useOrderStore((state) => state.deliveryFee);
@@ -134,7 +136,7 @@ export default function OrderHistory() {
           >
             <Group justify="space-between">
               <Text fw={700} fz="lg">
-                🧾 Order #{index + 1}
+                🧾 {t('orderHistory.order')} #{index + 1}
               </Text>
               <Group>
                 <span
@@ -146,7 +148,11 @@ export default function OrderHistory() {
                       : classes.statusCanceled
                   }`}
                 >
-                  {order.status?.toUpperCase()}
+                  {order.status === OrderStatus.COMPLETED
+                    ? t('orderHistory.completed')
+                    : order.status === OrderStatus.PENDING
+                    ? t('orderHistory.pending')
+                    : t('orderHistory.canceled')}
                 </span>
                 <Badge color="blue">{order.orderDate}</Badge>
               </Group>
@@ -166,17 +172,17 @@ export default function OrderHistory() {
 
                     {item.size && (
                       <Text size="sm" c="dimmed">
-                        Size: {item.size}
+                        {t('orderItems.size')}: {item.size}
                       </Text>
                     )}
                     {item.additionalCheese && (
                       <Text size="sm" c="dimmed">
-                        Cheese: {item.additionalCheese}
+                        {t('orderItems.cheese')}: {item.additionalCheese}
                       </Text>
                     )}
                     {item.additionalCrust && (
                       <Text size="sm" c="dimmed">
-                        Crust: {item.additionalCrust}
+                        {t('orderItems.crust')}: {item.additionalCrust}
                       </Text>
                     )}
                   </div>
@@ -193,22 +199,22 @@ export default function OrderHistory() {
             {/* TOTAL */}
             <div className={classes.order_summary}>
               <Group justify="space-between">
-                <Text>Dishes:</Text>
+                <Text>{t('orderHistory.dishes')}:</Text>
                 <Text>{itemsTotal.toLocaleString()}đ</Text>
               </Group>
 
               <Group justify="space-between">
-                <Text>Discount:</Text>
+                <Text>{t('orderHistory.discount')}:</Text>
                 <Text>-{discount.toLocaleString()}đ</Text>
               </Group>
 
               <Group justify="space-between">
-                <Text>Voucher:</Text>
+                <Text>{t('orderHistory.voucher')}:</Text>
                 <Text>-{voucher.toLocaleString()}đ</Text>
               </Group>
 
               <Group justify="space-between">
-                <Text>Delivery fee:</Text>
+                <Text>{t('orderHistory.deliveryFee')}:</Text>
                 <Text>{deliveryFee.toLocaleString()}đ</Text>
               </Group>
 
@@ -216,7 +222,7 @@ export default function OrderHistory() {
 
               <Group justify="space-between">
                 <Text fw={700} fz="lg">
-                  Total:
+                  {t('orderHistory.total')}:
                 </Text>
                 <Text fw={700} fz="lg" c="green">
                   {finalTotal.toLocaleString()}đ

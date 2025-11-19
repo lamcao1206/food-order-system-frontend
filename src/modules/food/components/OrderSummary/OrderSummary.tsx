@@ -1,4 +1,5 @@
 import { Box, Stack, Group, Text, Divider, Button } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 import classes from "./OrderSummary.module.scss";
 import useCartStore from "@/lib/zustand/stores/useCartStore";
 import useOrderStore from "@/lib/zustand/stores/useOrderStore";
@@ -10,6 +11,7 @@ import { discounts } from "@/constants/food";
 import type { IOrderState } from "@/lib/zustand/slices/orderSlice";
 
 const OrderSummary = () => {
+  const { t } = useTranslation('food');
   const deliveryFee = 16;
   const cartItems: CartItemInput[] = useCartStore(
     (state: IFoodState) => state.cart
@@ -58,8 +60,8 @@ const OrderSummary = () => {
   const onOrderSuccess = () => {
     if (totalAmount > 0)
       notifications.show({
-        title: "Success!",
-        message: "You have ordered successfully.",
+        title: t('success.title'),
+        message: t('success.message'),
         color: "green",
         position: "top-right",
         autoClose: 4000,
@@ -80,11 +82,11 @@ const OrderSummary = () => {
       <Stack gap="md">
         <Stack gap={4} pt="md">
           <Group justify="space-between">
-            <Text size="sm">Total</Text>
+            <Text size="sm">{t('orderSummary.total')}</Text>
             <Text size="sm">{totalPrice.toLocaleString("vi-VN")}đ</Text>
           </Group>
           <Group justify="space-between" align="flex-start">
-            <Text size="sm">Vouchers Discount</Text>
+            <Text size="sm">{t('orderSummary.vouchersDiscount')}</Text>
             <Stack gap={0}>
               {voucher && (
                 <Text size="sm" style={{ color: "#fa5252" }}>
@@ -104,7 +106,7 @@ const OrderSummary = () => {
             </Stack>
           </Group>
           <Group justify="space-between">
-            <Text size="sm">Delivery Fee</Text>
+            <Text size="sm">{t('orderSummary.deliveryFee')}</Text>
             <Text size="sm">{`+${(deliveryFee * 1000).toLocaleString(
               "vi-VN"
             )}đ`}</Text>
@@ -120,7 +122,7 @@ const OrderSummary = () => {
           className={classes.checkoutButton}
           onClick={() => onOrderSuccess()}
         >
-          {`COMPLETE ORDER  ${totalAmount.toLocaleString("vi-VN")}Đ`}
+          {`${t('orderSummary.completeOrder')}  ${totalAmount.toLocaleString("vi-VN")}Đ`}
         </Button>
       </Stack>
     </Box>

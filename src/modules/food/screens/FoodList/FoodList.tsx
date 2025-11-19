@@ -1,19 +1,21 @@
 import { useState } from "react";
 import { Container, Group, Button, Box } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 import { OrderDetail } from "../../components/OrderDetail";
 import classes from "./FoodList.module.scss";
 import { ProductGrid } from "../../components/ProductGrid";
 import { NavbarLanding } from "../../../landing/components/Navbar/Navbar";
 
 const FoodList = () => {
+  const { t } = useTranslation('food');
   const [selectedCategory, setSelectedCategory] = useState("all");
 
   const subNavItems = [
-    { label: "all" },
-    { label: "pizza" },
-    { label: "pasta" },
-    { label: "appetizer" },
-    { label: "chicken" },
+    { label: "all", key: "all" },
+    { label: "pizza", key: "pizza" },
+    { label: "pasta", key: "pasta" },
+    { label: "appetizer", key: "appetizer" },
+    { label: "chicken", key: "chicken" },
   ];
 
   return (
@@ -36,7 +38,7 @@ const FoodList = () => {
                 size="xs"
                 onClick={() => setSelectedCategory(item.label)}
               >
-                {item.label.toUpperCase()}
+                {t(`categories.${item.key}`)}
               </Button>
             ))}
           </Group>

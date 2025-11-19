@@ -1,13 +1,21 @@
 import { Button, Group, Text, Container, Burger, Drawer, Stack } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 import classes from "./Navbar.module.scss";
 import AppLogo from "@/assets/png/app-icon.png";
 import SignInModal from "../SignInModal";
 import SignUpModal from "../SignUpModal";
 import { Link } from "react-router-dom";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
+import useUserStore from "@/lib/zustand/stores/useUserStore";
 
 export function NavbarLanding() {
+  const { t } = useTranslation(['landing', 'auth']);
+  const navigate = useNavigate();
+  const user = useUserStore((state) => state.user);
+  const clearUser = useUserStore((state) => state.actions.clearUser);
   const [opened, { toggle, close }] = useDisclosure(false);
   const [signInOpened, setSignInOpened] = useState(false);
   const [signUpOpened, setSignUpOpened] = useState(false);
@@ -32,6 +40,12 @@ export function NavbarLanding() {
     setSignInOpened(true);
   };
 
+  const handleSignOut = () => {
+    clearUser();
+    navigate("/");
+    close();
+  };
+
   return (
     <>
       <header className={classes.header}>
@@ -45,29 +59,42 @@ export function NavbarLanding() {
             </Group>
             <Group visibleFrom="sm" className={classes.navLinks}>
               <Link to="/food/list">
-                Menu
+                {t('landing:navbar.menu')}
               </Link>
               <Link to="/food/order">
-                Order
+                {t('landing:navbar.order')}
               </Link>
               <Link to="/food/history">
-                History
+                {t('landing:navbar.history')}
               </Link>
             </Group>
             <Group visibleFrom="sm" className={classes.desktopButtons}>
-              <Button 
-                variant="outline" 
-                onClick={handleSignInClick}
-                className={classes.signInButton}
-              >
-                Sign In
-              </Button>
-              <Button 
-                onClick={handleSignUpClick}
-                className={classes.signUpButton}
-              >
-                Sign Up
-              </Button>
+              <LanguageSwitcher />
+              {user ? (
+                <Button 
+                  variant="outline" 
+                  onClick={handleSignOut}
+                  className={classes.signInButton}
+                >
+                  {t('auth:signOut')}
+                </Button>
+              ) : (
+                <>
+                  <Button 
+                    variant="outline" 
+                    onClick={handleSignInClick}
+                    className={classes.signInButton}
+                  >
+                    {t('landing:navbar.signIn')}
+                  </Button>
+                  <Button 
+                    onClick={handleSignUpClick}
+                    className={classes.signUpButton}
+                  >
+                    {t('landing:navbar.signUp')}
+                  </Button>
+                </>
+              )}
             </Group>
 
             <Burger
@@ -85,7 +112,7 @@ export function NavbarLanding() {
       <Drawer
         opened={opened}
         onClose={close}
-        title="Menu"
+        title={t('landing:navbar.mobileMenu')}
         size="sm"
         styles={{
           title: {
@@ -96,23 +123,40 @@ export function NavbarLanding() {
         }}
       >
         <Stack gap="md" mt="xl">
-          <Button 
-            variant="outline" 
-            fullWidth
-            size="md"
-            onClick={handleSignInClick}
-            className={classes.mobileSignInButton}
-          >
-            Sign In
-          </Button>
-          <Button 
-            fullWidth
-            size="md"
-            onClick={handleSignUpClick}
-            className={classes.mobileSignUpButton}
-          >
-            Sign Up
-          </Button>
+          <Group justify="center">
+            <LanguageSwitcher />
+          </Group>
+          {user ? (
+            <Button 
+              variant="outline" 
+              fullWidth
+              size="md"
+              onClick={handleSignOut}
+              className={classes.mobileSignInButton}
+            >
+              {t('auth:signOut')}
+            </Button>
+          ) : (
+            <>
+              <Button 
+                variant="outline" 
+                fullWidth
+                size="md"
+                onClick={handleSignInClick}
+                className={classes.mobileSignInButton}
+              >
+                {t('landing:navbar.signIn')}
+              </Button>
+              <Button 
+                fullWidth
+                size="md"
+                onClick={handleSignUpClick}
+                className={classes.mobileSignUpButton}
+              >
+                {t('landing:navbar.signUp')}
+              </Button>
+            </>
+          )}
         </Stack>
       </Drawer>
 

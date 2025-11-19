@@ -1,4 +1,5 @@
 import { Box, Group, Text } from "@mantine/core";
+import { useTranslation } from "react-i18next";
 import { OrderItemsList } from "../OrderItemsList";
 import { OrderSummary } from "../OrderSummary";
 import classes from "./OrderDetail.module.scss";
@@ -7,6 +8,7 @@ import useCartStore from "@/lib/zustand/stores/useCartStore";
 import type { IFoodState } from "@/lib/zustand/slices/cartSlice";
 
 const OrderDetail = () => {
+  const { t } = useTranslation('food');
   const cartItems: CartItemInput[] = useCartStore(
     (state: IFoodState) => state.cart
   );
@@ -25,7 +27,7 @@ const OrderDetail = () => {
           }}
         >
           <Text style={{ fontSize: 24, fontWeight: 700 }}>
-            Your Order Detail
+            {t('orderDetail.title')}
           </Text>
         </Group>
       )}

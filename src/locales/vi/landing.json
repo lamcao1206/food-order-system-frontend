@@ -1,0 +1,92 @@
+{
+  "navbar": {
+    "menu": "Thực đơn",
+    "order": "Đặt hàng",
+    "history": "Lịch sử",
+    "signIn": "Đăng nhập",
+    "signUp": "Đăng ký",
+    "mobileMenu": "Menu"
+  },
+  "hero": {
+    "authenticItalianPizza": "Pizza Ý Chính Thống",
+    "welcomeTo": "Chào mừng đến với",
+    "pizzaHub": "Pizza Hub",
+    "subtitle": "Trải nghiệm sự kết hợp hoàn hảo giữa công thức Ý truyền thống và hương vị hiện đại. Nguyên liệu tươi, bột nhào bằng tay và hương vị chính thống trong từng miếng cắn.",
+    "orderNow": "Đặt hàng ngay",
+    "viewMenu": "Xem thực đơn",
+    "minDelivery": "Giao hàng 30 phút",
+    "freeDelivery": "Miễn phí giao hàng",
+    "freshMade": "Tươi ngon"
+  },
+  "featuredPizzas": {
+    "title": "Pizza Nổi Bật",
+    "subtitle": "Được làm thủ công với tình yêu bằng những nguyên liệu tốt nhất và kỹ thuật Ý truyền thống",
+    "popular": "Phổ biến",
+    "min": "phút",
+    "order": "Đặt hàng",
+    "viewFullMenu": "Xem toàn bộ thực đơn"
+  },
+  "aboutUs": {
+    "title": "Câu Chuyện Của Chúng Tôi",
+    "subtitle": "Đam Mê Với Pizza Ý Chính Thống",
+    "story1": "Được thành lập vào năm 2025, Pizza Hub bắt đầu như một nhà hàng gia đình nhỏ với sứ mệnh đơn giản: mang pizza Ý chính thống đến cộng đồng của chúng tôi. Người sáng lập của chúng tôi, Marco, đã học nghệ thuật làm pizza từ bà ngoại ở Naples, và chúng tôi đã hoàn thiện nghề thủ công của mình từ đó.",
+    "story2": "Mỗi chiếc pizza đều được làm thủ công bằng kỹ thuật truyền thống, nguyên liệu tươi được lấy từ các trang trại địa phương, và cùng niềm đam mê đã bắt đầu hành trình của chúng tôi. Chúng tôi tin rằng pizza tuyệt vời sẽ kết nối mọi người và tạo ra những kỷ niệm lâu dài.",
+    "valuesTitle": "Điều Gì Làm Nên Sự Đặc Biệt Của Chúng Tôi",
+    "masterChefs": {
+      "title": "Đầu Bếp Bậc Thầy",
+      "description": "Được đào tạo về kỹ thuật Ý truyền thống với nhiều năm kinh nghiệm"
+    },
+    "freshIngredients": {
+      "title": "Nguyên Liệu Tươi",
+      "description": "Được lấy hàng ngày từ các trang trại địa phương và nhà cung cấp cao cấp"
+    },
+    "madeWithLove": {
+      "title": "Làm Bằng Tình Yêu",
+      "description": "Mỗi chiếc pizza đều được chế biến với niềm đam mê và sự chú ý đến từng chi tiết"
+    },
+    "awardWinning": {
+      "title": "Giải Thưởng",
+      "description": "Được công nhận về sự xuất sắc trong hương vị và dịch vụ"
+    }
+  },
+  "contact": {
+    "title": "Liên Hệ",
+    "subtitle": "Sẵn sàng đặt hàng? Có câu hỏi? Chúng tôi ở đây để giúp đỡ và mang đến trải nghiệm pizza tốt nhất!",
+    "contactInformation": "Thông Tin Liên Hệ",
+    "phone": "Điện thoại",
+    "email": "Email",
+    "address": "Địa chỉ",
+    "hours": "Giờ làm việc",
+    "orderOnline": "Đặt hàng trực tuyến",
+    "callNow": "Gọi ngay",
+    "sendMessage": "Gửi tin nhắn cho chúng tôi",
+    "yourName": "Tên của bạn",
+    "enterName": "Nhập tên của bạn",
+    "emailAddress": "Địa chỉ email",
+    "enterEmail": "Nhập email của bạn",
+    "phoneNumber": "Số điện thoại",
+    "enterPhone": "Nhập số điện thoại của bạn",
+    "message": "Tin nhắn",
+    "enterMessage": "Cho chúng tôi biết về đơn hàng của bạn hoặc bất kỳ câu hỏi nào...",
+    "send": "Gửi tin nhắn"
+  },
+  "footer": {
+    "description": "Mang pizza Ý chính thống đến tận cửa nhà bạn. Nguyên liệu tươi, công thức truyền thống và hương vị đặc biệt trong từng miếng cắn.",
+    "quickLinks": "Liên Kết Nhanh",
+    "home": "Trang chủ",
+    "menu": "Thực đơn",
+    "aboutUs": "Về chúng tôi",
+    "contact": "Liên hệ",
+    "orderOnline": "Đặt hàng trực tuyến",
+    "customerService": "Dịch Vụ Khách Hàng",
+    "faq": "Câu hỏi thường gặp",
+    "deliveryInfo": "Thông tin giao hàng",
+    "returns": "Đổi trả",
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfService": "Điều khoản dịch vụ",
+    "contactInfo": "Thông Tin Liên Hệ",
+    "copyright": "© 2025 Pizza Hub. Bảo lưu mọi quyền.",
+    "madeWith": "Được làm với ❤️ cho những người yêu pizza"
+  }
+}
+

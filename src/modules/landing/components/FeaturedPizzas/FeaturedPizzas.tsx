@@ -1,5 +1,6 @@
 import { Container, Title, Text, Card, Group, Badge, Button, Stack, Grid } from '@mantine/core';
 import { IconStar, IconShoppingCart, IconClock } from '@tabler/icons-react';
+import { useTranslation } from 'react-i18next';
 import styles from './FeaturedPizzas.module.scss';
 
 interface Pizza {
@@ -54,15 +55,17 @@ const pizzas: Pizza[] = [
 ];
 
 const FeaturedPizzas = () => {
+  const { t } = useTranslation('landing');
+  
   return (
     <div className={styles.section}>
       <Container size="lg">
         <Stack gap="xl" align="center" className={styles.header}>
           <Title order={2} className={styles.title}>
-            Our Featured Pizzas
+            {t('featuredPizzas.title')}
           </Title>
           <Text size="lg" className={styles.subtitle} ta="center" maw={600}>
-            Handcrafted with love using the finest ingredients and traditional Italian techniques
+            {t('featuredPizzas.subtitle')}
           </Text>
         </Stack>
 
@@ -72,7 +75,7 @@ const FeaturedPizzas = () => {
               <Card className={styles.pizzaCard} shadow="md" radius="lg">
                 {pizza.isPopular && (
                   <Badge className={styles.popularBadge} size="lg">
-                    Popular
+                    {t('featuredPizzas.popular')}
                   </Badge>
                 )}
                 
@@ -99,7 +102,7 @@ const FeaturedPizzas = () => {
                     <Group gap="xs">
                       <IconClock size={16} />
                       <Text size="sm">
-                        {pizza.cookTime} min
+                        {pizza.cookTime} {t('featuredPizzas.min')}
                       </Text>
                     </Group>
                   </Group>
@@ -113,7 +116,7 @@ const FeaturedPizzas = () => {
                       className={styles.orderButton}
                       leftSection={<IconShoppingCart size={16} />}
                     >
-                      Order
+                      {t('featuredPizzas.order')}
                     </Button>
                   </Group>
                 </Stack>
@@ -124,7 +127,7 @@ const FeaturedPizzas = () => {
 
         <div className={styles.viewAllSection}>
           <Button size="lg" variant="outline" className={styles.viewAllButton}>
-            View Full Menu
+            {t('featuredPizzas.viewFullMenu')}
           </Button>
         </div>
       </Container>

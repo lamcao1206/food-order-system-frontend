@@ -1,0 +1,92 @@
+{
+  "navbar": {
+    "menu": "Menu",
+    "order": "Order",
+    "history": "History",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "mobileMenu": "Menu"
+  },
+  "hero": {
+    "authenticItalianPizza": "Authentic Italian Pizza",
+    "welcomeTo": "Welcome to",
+    "pizzaHub": "Pizza Hub",
+    "subtitle": "Experience the perfect blend of traditional Italian recipes and modern flavors. Fresh ingredients, hand-tossed dough, and authentic taste in every bite.",
+    "orderNow": "Order Now",
+    "viewMenu": "View Menu",
+    "minDelivery": "30 Min Delivery",
+    "freeDelivery": "Free Delivery",
+    "freshMade": "Fresh Made"
+  },
+  "featuredPizzas": {
+    "title": "Our Featured Pizzas",
+    "subtitle": "Handcrafted with love using the finest ingredients and traditional Italian techniques",
+    "popular": "Popular",
+    "min": "min",
+    "order": "Order",
+    "viewFullMenu": "View Full Menu"
+  },
+  "aboutUs": {
+    "title": "Our Story",
+    "subtitle": "Passion for Authentic Italian Pizza",
+    "story1": "Founded in 2025, Pizza Hub began as a small family restaurant with a simple mission: to bring authentic Italian pizza to our community. Our founder, Marco, learned the art of pizza making from his grandmother in Naples, and we've been perfecting our craft ever since.",
+    "story2": "Every pizza is handcrafted using traditional techniques, fresh ingredients sourced from local farms, and the same passion that started our journey. We believe that great pizza brings people together and creates lasting memories.",
+    "valuesTitle": "What Makes Us Special",
+    "masterChefs": {
+      "title": "Master Chefs",
+      "description": "Trained in traditional Italian techniques with years of experience"
+    },
+    "freshIngredients": {
+      "title": "Fresh Ingredients",
+      "description": "Sourced daily from local farms and premium suppliers"
+    },
+    "madeWithLove": {
+      "title": "Made with Love",
+      "description": "Every pizza is crafted with passion and attention to detail"
+    },
+    "awardWinning": {
+      "title": "Award Winning",
+      "description": "Recognized for excellence in taste and service"
+    }
+  },
+  "contact": {
+    "title": "Get In Touch",
+    "subtitle": "Ready to order? Have questions? We're here to help and deliver the best pizza experience!",
+    "contactInformation": "Contact Information",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "hours": "Hours",
+    "orderOnline": "Order Online",
+    "callNow": "Call Now",
+    "sendMessage": "Send us a Message",
+    "yourName": "Your Name",
+    "enterName": "Enter your name",
+    "emailAddress": "Email Address",
+    "enterEmail": "Enter your email",
+    "phoneNumber": "Phone Number",
+    "enterPhone": "Enter your phone",
+    "message": "Message",
+    "enterMessage": "Tell us about your order or any questions...",
+    "send": "Send Message"
+  },
+  "footer": {
+    "description": "Bringing authentic Italian pizza to your doorstep. Fresh ingredients, traditional recipes, and exceptional taste in every bite.",
+    "quickLinks": "Quick Links",
+    "home": "Home",
+    "menu": "Menu",
+    "aboutUs": "About Us",
+    "contact": "Contact",
+    "orderOnline": "Order Online",
+    "customerService": "Customer Service",
+    "faq": "FAQ",
+    "deliveryInfo": "Delivery Info",
+    "returns": "Returns",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "contactInfo": "Contact Info",
+    "copyright": "© 2025 Pizza Hub. All rights reserved.",
+    "madeWith": "Made with ❤️ for pizza lovers"
+  }
+}
+

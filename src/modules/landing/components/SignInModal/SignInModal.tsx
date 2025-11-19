@@ -19,9 +19,11 @@ import {
   IconCheck,
 } from "@tabler/icons-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { notifications } from "@mantine/notifications";
 import styles from "./SignInModal.module.scss";
 import { useNavigate } from "react-router-dom";
+import useUserStore from "@/lib/zustand/stores/useUserStore";
 
 interface SignInModalProps {
   opened: boolean;
@@ -34,9 +36,11 @@ const SignInModal = ({
   onClose,
   onSwitchToSignUp,
 }: SignInModalProps) => {
+  const { t } = useTranslation('auth');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+  const setUser = useUserStore((state) => state.actions.setUser);
 
   const form = useForm({
     initialValues: {
@@ -44,9 +48,9 @@ const SignInModal = ({
       password: "",
     },
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : t('invalidEmail')),
       password: (value) =>
-        value.length < 6 ? "Password must be at least 6 characters" : null,
+        value.length < 6 ? t('passwordTooShort') : null,
     },
   });
 
@@ -61,9 +65,16 @@ const SignInModal = ({
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
+      // Set user in store (for demo, using email as name)
+      setUser({
+        id: '1',
+        email: values.email,
+        name: values.email.split('@')[0],
+      });
+
       notifications.show({
-        title: "Login Successful",
-        message: "Welcome back!",
+        title: t('loginSuccessful'),
+        message: t('welcomeBackMessage'),
         color: "green",
         icon: <IconCheck size={18} />,
       });
@@ -74,8 +85,8 @@ const SignInModal = ({
       // For demo purposes, just close the modal
       onClose();
       form.reset();
-    } catch (err) {
-      setError("Invalid email or password");
+    } catch {
+      setError(t('invalidEmailOrPassword'));
     } finally {
       setIsLoading(false);
     }
@@ -101,10 +112,10 @@ const SignInModal = ({
         {/* Header */}
         <Box className={styles.header}>
           <Title order={2} className={styles.title}>
-            Welcome Back
+            {t('welcomeBack')}
           </Title>
           <Text size="sm" className={styles.subtitle}>
-            Sign in to your account
+            {t('signInToAccount')}
           </Text>
         </Box>
 
@@ -115,7 +126,7 @@ const SignInModal = ({
               {error && (
                 <Alert
                   icon={<IconAlertCircle size={16} />}
-                  title="Error"
+                  title={t('error')}
                   color="red"
                   variant="light"
                   className={styles.alert}
@@ -125,8 +136,8 @@ const SignInModal = ({
               )}
 
               <TextInput
-                label="Email Address"
-                placeholder="Enter your email"
+                label={t('emailAddress')}
+                placeholder={t('enterEmail')}
                 required
                 leftSection={<IconMail size={18} />}
                 {...form.getInputProps("email")}
@@ -138,8 +149,8 @@ const SignInModal = ({
               />
 
               <PasswordInput
-                label="Password"
-                placeholder="Enter your password"
+                label={t('password')}
+                placeholder={t('enterPassword')}
                 required
                 leftSection={<IconLock size={18} />}
                 {...form.getInputProps("password")}
@@ -157,11 +168,11 @@ const SignInModal = ({
                 loading={isLoading}
                 className={styles.submitButton}
               >
-                Sign In
+                {t('signIn')}
               </Button>
 
               <Text size="sm" ta="center" c="dimmed" style={{ marginTop: 8 }}>
-                Don't have an account?{" "}
+                {t('dontHaveAccount')}{" "}
                 <Anchor
                   href="#"
                   onClick={(e) => {
@@ -172,7 +183,7 @@ const SignInModal = ({
                   c="#ff6b35"
                   className={styles.switchLink}
                 >
-                  Sign up
+                  {t('signUp')}
                 </Anchor>
               </Text>
             </Stack>

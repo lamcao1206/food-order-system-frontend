@@ -22,6 +22,7 @@ import {
   IconCheck,
 } from "@tabler/icons-react";
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import styles from "./SignUpModal.module.scss";
 import { notifications } from "@mantine/notifications";
 import { useNavigate } from "react-router-dom";
@@ -37,6 +38,7 @@ const SignUpModal = ({
   onClose,
   onSwitchToSignIn,
 }: SignUpModalProps) => {
+  const { t } = useTranslation('auth');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -52,14 +54,14 @@ const SignUpModal = ({
     },
     validate: {
       firstName: (value) =>
-        value.length < 2 ? "First name must be at least 2 characters" : null,
+        value.length < 2 ? t('firstNameTooShort') : null,
       lastName: (value) =>
-        value.length < 2 ? "Last name must be at least 2 characters" : null,
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+        value.length < 2 ? t('lastNameTooShort') : null,
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : t('invalidEmail')),
       password: (value) =>
-        value.length < 6 ? "Password must be at least 6 characters" : null,
+        value.length < 6 ? t('passwordTooShort') : null,
       agreeToTerms: (value) =>
-        !value ? "You must agree to the terms and conditions" : null,
+        !value ? t('mustAgreeToTerms') : null,
     },
   });
 
@@ -75,8 +77,8 @@ const SignUpModal = ({
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       notifications.show({
-        title: "Sign up Successful",
-        message: "Welcome to our platform!",
+        title: t('signUpSuccessful'),
+        message: t('welcomeMessage'),
         color: "green",
         icon: <IconCheck size={18} />,
       });
@@ -87,8 +89,8 @@ const SignUpModal = ({
       // For demo purposes, just close the modal
       onClose();
       form.reset();
-    } catch (err) {
-      setError("Email already exists or registration failed");
+    } catch {
+      setError(t('emailAlreadyExists'));
     } finally {
       setIsLoading(false);
     }
@@ -114,10 +116,10 @@ const SignUpModal = ({
         {/* Header */}
         <Box className={styles.header}>
           <Title order={2} className={styles.title}>
-            Join Us Today
+            {t('joinUsToday')}
           </Title>
           <Text size="sm" className={styles.subtitle}>
-            Create your account to get started
+            {t('createAccount')}
           </Text>
         </Box>
 
@@ -128,7 +130,7 @@ const SignUpModal = ({
               {error && (
                 <Alert
                   icon={<IconAlertCircle size={16} />}
-                  title="Error"
+                  title={t('error')}
                   color="red"
                   variant="light"
                   className={styles.alert}
@@ -139,8 +141,8 @@ const SignUpModal = ({
 
               <Group grow>
                 <TextInput
-                  label="First Name"
-                  placeholder="Enter your first name"
+                  label={t('firstName')}
+                  placeholder={t('enterFirstName')}
                   required
                   leftSection={<IconUser size={18} />}
                   {...form.getInputProps("firstName")}
@@ -151,8 +153,8 @@ const SignUpModal = ({
                   }}
                 />
                 <TextInput
-                  label="Last Name"
-                  placeholder="Enter your last name"
+                  label={t('lastName')}
+                  placeholder={t('enterLastName')}
                   required
                   leftSection={<IconUser size={18} />}
                   {...form.getInputProps("lastName")}
@@ -165,8 +167,8 @@ const SignUpModal = ({
               </Group>
 
               <TextInput
-                label="Email Address"
-                placeholder="Enter your email"
+                label={t('emailAddress')}
+                placeholder={t('enterEmail')}
                 required
                 leftSection={<IconMail size={18} />}
                 {...form.getInputProps("email")}
@@ -178,8 +180,8 @@ const SignUpModal = ({
               />
 
               <PasswordInput
-                label="Password"
-                placeholder="Create a password"
+                label={t('password')}
+                placeholder={t('createPassword')}
                 required
                 leftSection={<IconLock size={18} />}
                 {...form.getInputProps("password")}
@@ -193,23 +195,23 @@ const SignUpModal = ({
               <Checkbox
                 label={
                   <Text size="sm" c="dimmed">
-                    I agree to the{" "}
+                    {t('agreeToTerms')}{" "}
                     <Anchor
                       href="#"
                       size="sm"
                       c="#ff6b35"
                       style={{ textDecoration: "none" }}
                     >
-                      Terms of Service
+                      {t('termsOfService')}
                     </Anchor>{" "}
-                    and{" "}
+                    {t('and')}{" "}
                     <Anchor
                       href="#"
                       size="sm"
                       c="#ff6b35"
                       style={{ textDecoration: "none" }}
                     >
-                      Privacy Policy
+                      {t('privacyPolicy')}
                     </Anchor>
                   </Text>
                 }
@@ -227,11 +229,11 @@ const SignUpModal = ({
                 loading={isLoading}
                 className={styles.submitButton}
               >
-                Create Account
+                {t('createAccountButton')}
               </Button>
 
               <Text size="sm" ta="center" c="dimmed" style={{ marginTop: 8 }}>
-                Already have an account?{" "}
+                {t('alreadyHaveAccount')}{" "}
                 <Anchor
                   href="#"
                   onClick={(e) => {
@@ -242,7 +244,7 @@ const SignUpModal = ({
                   c="#ff6b35"
                   className={styles.switchLink}
                 >
-                  Sign in
+                  {t('signIn')}
                 </Anchor>
               </Text>
             </Stack>

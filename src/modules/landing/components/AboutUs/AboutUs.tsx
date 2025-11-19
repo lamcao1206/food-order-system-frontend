@@ -12,10 +12,12 @@ import {
   IconHeart,
   IconAward,
 } from "@tabler/icons-react";
+import { useTranslation } from 'react-i18next';
 import styles from "./AboutUs.module.scss";
 import pizzaImage from "../../../../assets/png/pizza.png";
 
 const AboutUs = () => {
+  const { t } = useTranslation('landing');
   return (
     <div className={styles.section}>
       <Container size="lg">
@@ -23,23 +25,16 @@ const AboutUs = () => {
           <Grid.Col span={{ base: 12, md: 6 }}>
             <Stack gap="lg">
               <Title order={2} className={styles.title}>
-                Our Story
+                {t('aboutUs.title')}
               </Title>
               <Text size="lg" className={styles.subtitle}>
-                Passion for Authentic Italian Pizza
+                {t('aboutUs.subtitle')}
               </Text>
               <Text className={styles.description}>
-                Founded in 2025, Pizza Hub began as a small family restaurant
-                with a simple mission: to bring authentic Italian pizza to our
-                community. Our founder, Marco, learned the art of pizza making
-                from his grandmother in Naples, and we've been perfecting our
-                craft ever since.
+                {t('aboutUs.story1')}
               </Text>
               <Text className={styles.description}>
-                Every pizza is handcrafted using traditional techniques, fresh
-                ingredients sourced from local farms, and the same passion that
-                started our journey. We believe that great pizza brings people
-                together and creates lasting memories.
+                {t('aboutUs.story2')}
               </Text>
             </Stack>
           </Grid.Col>
@@ -57,7 +52,7 @@ const AboutUs = () => {
 
         <div className={styles.valuesSection}>
           <Title order={3} className={styles.valuesTitle} ta="center">
-            What Makes Us Special
+            {t('aboutUs.valuesTitle')}
           </Title>
 
           <Grid gutter="xl" className={styles.valuesGrid}>
@@ -68,15 +63,14 @@ const AboutUs = () => {
                     <IconChefHat size={32} />
                   </div>
                   <Title order={4} className={styles.valueTitle}>
-                    Master Chefs
+                    {t('aboutUs.masterChefs.title')}
                   </Title>
                   <Text
                     size="sm"
                     ta="center"
                     className={styles.valueDescription}
                   >
-                    Trained in traditional Italian techniques with years of
-                    experience
+                    {t('aboutUs.masterChefs.description')}
                   </Text>
                 </Stack>
               </Card>
@@ -89,14 +83,14 @@ const AboutUs = () => {
                     <IconLeaf size={32} />
                   </div>
                   <Title order={4} className={styles.valueTitle}>
-                    Fresh Ingredients
+                    {t('aboutUs.freshIngredients.title')}
                   </Title>
                   <Text
                     size="sm"
                     ta="center"
                     className={styles.valueDescription}
                   >
-                    Sourced daily from local farms and premium suppliers
+                    {t('aboutUs.freshIngredients.description')}
                   </Text>
                 </Stack>
               </Card>
@@ -109,14 +103,14 @@ const AboutUs = () => {
                     <IconHeart size={32} />
                   </div>
                   <Title order={4} className={styles.valueTitle}>
-                    Made with Love
+                    {t('aboutUs.madeWithLove.title')}
                   </Title>
                   <Text
                     size="sm"
                     ta="center"
                     className={styles.valueDescription}
                   >
-                    Every pizza is crafted with passion and attention to detail
+                    {t('aboutUs.madeWithLove.description')}
                   </Text>
                 </Stack>
               </Card>
@@ -129,14 +123,14 @@ const AboutUs = () => {
                     <IconAward size={32} />
                   </div>
                   <Title order={4} className={styles.valueTitle}>
-                    Award Winning
+                    {t('aboutUs.awardWinning.title')}
                   </Title>
                   <Text
                     size="sm"
                     ta="center"
                     className={styles.valueDescription}
                   >
-                    Recognized for excellence in taste and service
+                    {t('aboutUs.awardWinning.description')}
                   </Text>
                 </Stack>
               </Card>

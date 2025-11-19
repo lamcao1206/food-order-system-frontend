@@ -1,0 +1,19 @@
+{
+  "welcome": "Chào mừng",
+  "error": "Lỗi",
+  "loading": "Đang tải...",
+  "close": "Đóng",
+  "add": "Thêm",
+  "remove": "Xóa",
+  "quantity": "Số lượng",
+  "price": "Giá",
+  "total": "Tổng cộng",
+  "subtotal": "Tổng phụ",
+  "discount": "Giảm giá",
+  "deliveryFee": "Phí giao hàng",
+  "voucher": "Mã giảm giá",
+  "menu": "Thực đơn",
+  "order": "Đặt hàng",
+  "history": "Lịch sử"
+}
+

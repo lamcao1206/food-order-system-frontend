@@ -16,9 +16,11 @@ import {
   IconBrandInstagram,
   IconBrandTwitter,
 } from "@tabler/icons-react";
+import { useTranslation } from 'react-i18next';
 import styles from "./Footer.module.scss";
 
 const Footer = () => {
+  const { t } = useTranslation('landing');
   return (
     <footer className={styles.footer}>
       <Container size="lg">
@@ -28,8 +30,7 @@ const Footer = () => {
             <Stack gap="md">
               <Text className={styles.logo}>Pizza Hub</Text>
               <Text className={styles.description}>
-                Bringing authentic Italian pizza to your doorstep. Fresh ingredients, 
-                traditional recipes, and exceptional taste in every bite.
+                {t('footer.description')}
               </Text>
               <Group gap="md" className={styles.socialLinks}>
                 <Anchor href="#" className={styles.socialLink}>
@@ -48,22 +49,22 @@ const Footer = () => {
           {/* Quick Links */}
           <Grid.Col span={{ base: 12, sm: 6, md: 2 }}>
             <Stack gap="md">
-              <Text className={styles.sectionTitle}>Quick Links</Text>
+              <Text className={styles.sectionTitle}>{t('footer.quickLinks')}</Text>
               <Stack gap="xs">
                 <Anchor href="#" className={styles.footerLink}>
-                  Home
+                  {t('footer.home')}
                 </Anchor>
                 <Anchor href="#" className={styles.footerLink}>
-                  Menu
+                  {t('footer.menu')}
                 </Anchor>
                 <Anchor href="#" className={styles.footerLink}>
-                  About Us
+                  {t('footer.aboutUs')}
                 </Anchor>
                 <Anchor href="#" className={styles.footerLink}>
-                  Contact
+                  {t('footer.contact')}
                 </Anchor>
                 <Anchor href="#" className={styles.footerLink}>
-                  Order Online
+                  {t('footer.orderOnline')}
                 </Anchor>
               </Stack>
             </Stack>
@@ -72,22 +73,22 @@ const Footer = () => {
           {/* Customer Service */}
           <Grid.Col span={{ base: 12, sm: 6, md: 2 }}>
             <Stack gap="md">
-              <Text className={styles.sectionTitle}>Customer Service</Text>
+              <Text className={styles.sectionTitle}>{t('footer.customerService')}</Text>
               <Stack gap="xs">
                 <Anchor href="#" className={styles.footerLink}>
-                  FAQ
+                  {t('footer.faq')}
                 </Anchor>
                 <Anchor href="#" className={styles.footerLink}>
-                  Delivery Info
+                  {t('footer.deliveryInfo')}
                 </Anchor>
                 <Anchor href="#" className={styles.footerLink}>
-                  Returns
+                  {t('footer.returns')}
                 </Anchor>
                 <Anchor href="#" className={styles.footerLink}>
-                  Privacy Policy
+                  {t('footer.privacyPolicy')}
                 </Anchor>
                 <Anchor href="#" className={styles.footerLink}>
-                  Terms of Service
+                  {t('footer.termsOfService')}
                 </Anchor>
               </Stack>
             </Stack>
@@ -96,7 +97,7 @@ const Footer = () => {
           {/* Contact Info */}
           <Grid.Col span={{ base: 12, md: 4 }}>
             <Stack gap="md">
-              <Text className={styles.sectionTitle}>Contact Info</Text>
+              <Text className={styles.sectionTitle}>{t('footer.contactInfo')}</Text>
               <Stack gap="md">
                 <Group gap="md" align="flex-start">
                   <IconMapPin size={20} className={styles.contactIcon} />
@@ -135,10 +136,10 @@ const Footer = () => {
 
         <div className={styles.bottomSection}>
           <Text className={styles.copyright}>
-            © 2025 Pizza Hub. All rights reserved.
+            {t('footer.copyright')}
           </Text>
           <Text className={styles.madeWith}>
-            Made with ❤️ for pizza lovers
+            {t('footer.madeWith')}
           </Text>
         </div>
       </Container>

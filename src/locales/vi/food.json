@@ -1,0 +1,78 @@
+{
+  "categories": {
+    "all": "TẤT CẢ",
+    "pizza": "PIZZA",
+    "pasta": "PASTA",
+    "appetizer": "KHAI VỊ",
+    "chicken": "GÀ"
+  },
+  "orderDetail": {
+    "title": "Chi tiết đơn hàng của bạn",
+    "dishes": "Món",
+    "dish": "Món",
+    "emptyCart": "Giỏ hàng của bạn trống"
+  },
+  "orderItems": {
+    "enterVoucherCode": "Nhập mã E-voucher",
+    "apply": "Áp dụng",
+    "promotionDiscount": "Giảm giá khuyến mãi",
+    "selectPromotionDiscount": "CHỌN GIẢM GIÁ KHUYẾN MÃI",
+    "applyDiscount": "Áp dụng giảm giá",
+    "inch": "inch",
+    "size": "Kích thước",
+    "cheese": "Phô mai",
+    "crust": "Viền",
+    "cannotApplyDiscount": "Không thể áp dụng giảm giá",
+    "orderMustExceed": "Đơn hàng phải vượt quá",
+    "discountApplied": "Đã áp dụng giảm giá",
+    "youHaveApplied": "Bạn đã áp dụng",
+    "discount": "giảm giá",
+    "applySuccessful": "Áp dụng thành công!",
+    "youHaveUsedVouchers": "Bạn đã sử dụng voucher thành công",
+    "applyFailed": "Áp dụng thất bại",
+    "youHaveUsedVouchersBefore": "Bạn đã sử dụng voucher này trước đó",
+    "invalidVoucher": "Voucher không hợp lệ",
+    "voucherExpired": "Voucher của bạn đã hết hạn hoặc không đúng"
+  },
+  "orderSummary": {
+    "total": "Tổng cộng",
+    "vouchersDiscount": "Giảm giá voucher",
+    "deliveryFee": "Phí giao hàng",
+    "completeOrder": "HOÀN TẤT ĐẶT HÀNG"
+  },
+  "orderCheckout": {
+    "orderSummary": "Tóm tắt đơn hàng",
+    "orderDate": "Ngày đặt hàng",
+    "notAvailable": "Không có",
+    "paymentMethod": "Phương thức thanh toán",
+    "notSelected": "Chưa chọn",
+    "shippingAddress": "Địa chỉ giao hàng",
+    "noAddressProvided": "Chưa cung cấp địa chỉ",
+    "orderItems": "Món đã đặt",
+    "quantity": "Số lượng",
+    "noItemsInOrder": "Không có món trong đơn hàng.",
+    "subtotal": "Tổng phụ",
+    "discount": "Giảm giá",
+    "voucher": "Voucher",
+    "deliveryFee": "Phí giao hàng",
+    "total": "Tổng cộng",
+    "youveEarned": "Bạn đã kiếm được",
+    "pointsFromThisOrder": "điểm từ đơn hàng này!",
+    "youHaveNotOrderedYet": "Bạn chưa đặt hàng"
+  },
+  "orderHistory": {
+    "order": "Đơn hàng",
+    "pending": "ĐANG XỬ LÝ",
+    "completed": "HOÀN THÀNH",
+    "canceled": "ĐÃ HỦY",
+    "dishes": "Món",
+    "discount": "Giảm giá",
+    "voucher": "Voucher",
+    "deliveryFee": "Phí giao hàng",
+    "total": "Tổng cộng"
+  },
+  "success": {
+    "title": "Thành công!",
+    "message": "Bạn đã đặt hàng thành công."
+  }
+}

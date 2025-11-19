@@ -1,0 +1,19 @@
+{
+  "welcome": "Welcome",
+  "error": "Error",
+  "loading": "Loading...",
+  "close": "Close",
+  "add": "Add",
+  "remove": "Remove",
+  "quantity": "Quantity",
+  "price": "Price",
+  "total": "Total",
+  "subtotal": "Subtotal",
+  "discount": "Discount",
+  "deliveryFee": "Delivery fee",
+  "voucher": "Voucher",
+  "menu": "Menu",
+  "order": "Order",
+  "history": "History"
+}
+
