@@ -204,6 +204,12 @@
     "location": "Vị trí",
     "never": "Chưa bao giờ",
     "user": "Người dùng",
-    "vietnam": "Việt Nam"
+    "vietnam": "Việt Nam",
+    "loyaltyPoints": "Điểm tích lũy",
+    "points": "điểm"
+  },
+  "loyalty": {
+    "pointsEarned": "Đã tích lũy điểm!",
+    "pointsMessage": "Bạn đã nhận được {{points}} điểm tích lũy từ đơn hàng này!"
   }
 }

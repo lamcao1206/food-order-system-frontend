@@ -9,6 +9,9 @@ import type { CartItemInput } from "@/interfaces/food.interface";
 import { notifications } from "@mantine/notifications";
 import { discounts } from "@/constants/food";
 import type { IOrderState } from "@/lib/zustand/slices/orderSlice";
+import useUserStore from "@/lib/zustand/stores/useUserStore";
+import { IconStar } from "@tabler/icons-react";
+
 
 const OrderSummary = () => {
   const { t } = useTranslation('food');
@@ -22,6 +25,7 @@ const OrderSummary = () => {
   const discountId: number | string | null | undefined = useCartStore(
     (state: IFoodState) => state.discount
   );
+  const addLoyaltyPoints = useUserStore((state) => state.actions.addLoyaltyPoints);
   const {
     addToCart,
     setDiscount,
@@ -58,14 +62,29 @@ const OrderSummary = () => {
   const { clearCart, setDiscount: clearDiscount, addVoucher: clearVoucher } = useCartStore((state) => state.actions);
 
   const onOrderSuccess = () => {
-    if (totalAmount > 0)
+    if (totalAmount > 0) {
+      // Calculate loyalty points: 100,000₫ = 10 points, so 10,000₫ = 1 point
+      const pointsEarned = Math.floor(totalAmount / 10000);
+      
+      // Add loyalty points
+      if (pointsEarned > 0) {
+        addLoyaltyPoints(pointsEarned);
+      }
+
+      // Show combined success and loyalty points notification
+      const successMessage = pointsEarned > 0 
+        ? `${t('success.message')} ${t('loyalty.pointsMessage', { points: pointsEarned })}`
+        : t('success.message');
+      
       notifications.show({
         title: t('success.title'),
-        message: t('success.message'),
+        message: successMessage,
         color: "green",
         position: "top-right",
-        autoClose: 4000,
+        autoClose: 5000,
+        icon: pointsEarned > 0 ? <IconStar size={18} /> : undefined,
       });
+    }
     addToCart(cartItems);
     setDiscount(discountValue ?? null);
     addVoucher(voucher ? voucher*1000 : null);

@@ -204,6 +204,12 @@
     "location": "Location",
     "never": "Never",
     "user": "User",
-    "vietnam": "Vietnam"
+    "vietnam": "Vietnam",
+    "loyaltyPoints": "Loyalty Points",
+    "points": "points"
+  },
+  "loyalty": {
+    "pointsEarned": "Loyalty Points Earned!",
+    "pointsMessage": "You've earned {{points}} loyalty points from this order!"
   }
 }

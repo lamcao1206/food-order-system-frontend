@@ -1,5 +1,5 @@
 import { Container, Paper, Stack, Title, Text, Avatar, Group, Box } from "@mantine/core";
-import { IconMail, IconClock, IconMapPin, IconUser } from "@tabler/icons-react";
+import { IconMail, IconClock, IconMapPin, IconUser, IconStar } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
 import { NavbarLanding } from "@/modules/landing/components/Navbar/Navbar";
@@ -118,6 +118,20 @@ const Account = () => {
                   </Text>
                   <Text size="lg" fw={500} className={classes.value}>
                     {t('account.vietnam')}
+                  </Text>
+                </Box>
+              </Group>
+
+              <Group gap="md" className={classes.infoItem}>
+                <Box className={classes.iconWrapper}>
+                  <IconStar size={20} />
+                </Box>
+                <Box className={classes.infoContent}>
+                  <Text size="sm" c="dimmed" className={classes.label}>
+                    {t('account.loyaltyPoints')}
+                  </Text>
+                  <Text size="lg" fw={500} className={classes.value}>
+                    {user.loyaltyPoints ?? 0} {t('account.points')}
                   </Text>
                 </Box>
               </Group>
