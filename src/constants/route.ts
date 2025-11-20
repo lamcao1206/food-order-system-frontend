@@ -4,6 +4,7 @@ export enum RouteId {
   FOOD = 'food',
   ORDER = 'order',
   HISTORY= 'history',
+  ACCOUNT = 'account',
   RESTAURANT = 'restaurant',
   PUBLIC_ROOT = 'public-root',
   PRIVATE_ROOT = 'private-root',

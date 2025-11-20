@@ -93,6 +93,19 @@
   }
 }
 
+.mobileNavLink {
+  color: #2c3e50;
+  font-weight: 500;
+  height: rem(44);
+  justify-content: flex-start;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #f8f9fa;
+    color: #ff6b35;
+  }
+}
+
 .navLinks {
   display: flex;
   gap: 1.5rem; // 24px

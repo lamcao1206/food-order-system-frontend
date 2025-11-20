@@ -195,5 +195,15 @@
     "extraCheese": "Extra cheese",
     "traditionCrust": "Tradition crust",
     "cheeseCrust": "Cheese crust"
+  },
+  "account": {
+    "title": "Account Information",
+    "name": "Name",
+    "email": "Email",
+    "lastLogin": "Last Login",
+    "location": "Location",
+    "never": "Never",
+    "user": "User",
+    "vietnam": "Vietnam"
   }
 }

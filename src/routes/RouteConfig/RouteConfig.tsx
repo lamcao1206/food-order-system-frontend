@@ -5,6 +5,7 @@ import { LandingPage } from "@/modules/landing/screens/LandingPage";
 import {FoodList} from "@/modules/food/screens/FoodList";
 import {OrderCheckOutPage} from "@/modules/food/screens/OrderCheckOut";
 import { OrderHistoryPage } from "@/modules/food/screens/OrderHistory";
+import { Account } from "@/modules/food/screens/Account";
 import { RestaurantOrderList } from "@/modules/restaurant/screens/RestaurantOrderList";
 type RouteType = RouteObject & { authCanAccess?: boolean };
 
@@ -32,6 +33,12 @@ const historyRoute: RouteType = {
   element: <OrderHistoryPage />,
 };
 
+const accountRoute: RouteType = {
+  id: RouteId.ACCOUNT,
+  path: "account",
+  element: <Account />,
+};
+
 const restaurantRoute: RouteType = {
   id: RouteId.RESTAURANT,
   path: "orders",
@@ -48,7 +55,7 @@ const routes: RouteType[] = [
     id: RouteId.PRIVATE_ROOT,
     path: "/food",
     element: <ProtectedRoute allowedRole="normal" />,
-    children: [foodRoute,orderRoute,historyRoute]
+    children: [foodRoute,orderRoute,historyRoute,accountRoute]
   },
   {
     id: RouteId.RESTAURANT_ROOT,

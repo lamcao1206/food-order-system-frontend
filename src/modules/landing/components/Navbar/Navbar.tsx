@@ -70,6 +70,7 @@ export function NavbarLanding() {
                 <Link to="/food/list">{t("landing:navbar.menu")}</Link>
                 <Link to="/food/order">{t("landing:navbar.order")}</Link>
                 <Link to="/food/history">{t("landing:navbar.history")}</Link>
+                <Link to="/food/account">{t("landing:navbar.account")}</Link>
               </Group>
             )}
             <Group visibleFrom="sm" className={classes.desktopButtons}>
@@ -130,6 +131,30 @@ export function NavbarLanding() {
           <Group justify="center">
             <LanguageSwitcher />
           </Group>
+          {user && user.role === 'normal' && (
+            <Stack gap="xs" w="100%">
+              <Link to="/food/list" onClick={close} style={{ textDecoration: 'none' }}>
+                <Button variant="subtle" fullWidth size="md" className={classes.mobileNavLink}>
+                  {t("landing:navbar.menu")}
+                </Button>
+              </Link>
+              <Link to="/food/order" onClick={close} style={{ textDecoration: 'none' }}>
+                <Button variant="subtle" fullWidth size="md" className={classes.mobileNavLink}>
+                  {t("landing:navbar.order")}
+                </Button>
+              </Link>
+              <Link to="/food/history" onClick={close} style={{ textDecoration: 'none' }}>
+                <Button variant="subtle" fullWidth size="md" className={classes.mobileNavLink}>
+                  {t("landing:navbar.history")}
+                </Button>
+              </Link>
+              <Link to="/food/account" onClick={close} style={{ textDecoration: 'none' }}>
+                <Button variant="subtle" fullWidth size="md" className={classes.mobileNavLink}>
+                  {t("landing:navbar.account")}
+                </Button>
+              </Link>
+            </Stack>
+          )}
           {user ? (
             <Button
               variant="outline"

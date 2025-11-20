@@ -195,5 +195,15 @@
     "extraCheese": "Phô mai thêm",
     "traditionCrust": "Viền truyền thống",
     "cheeseCrust": "Viền phô mai"
+  },
+  "account": {
+    "title": "Thông tin tài khoản",
+    "name": "Tên",
+    "email": "Email",
+    "lastLogin": "Lần đăng nhập cuối",
+    "location": "Vị trí",
+    "never": "Chưa bao giờ",
+    "user": "Người dùng",
+    "vietnam": "Việt Nam"
   }
 }

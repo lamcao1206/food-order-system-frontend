@@ -71,13 +71,17 @@ const SignInModal = ({
       if (signInMode === 'restaurant') {
         // Validate restaurant credentials
         if (values.email === RESTAURANT_EMAIL && values.password === RESTAURANT_PASSWORD) {
+          const userId = 'restaurant-1';
           // Set user in store
           setUser({
-            id: 'restaurant-1',
+            id: userId,
             email: values.email,
             name: 'Pizza Hut Restaurant',
             role: 'restaurant',
           });
+
+          // Store last login time
+          localStorage.setItem(`lastLogin_${userId}`, new Date().toISOString());
 
           notifications.show({
             title: t('loginSuccessful'),
@@ -95,12 +99,16 @@ const SignInModal = ({
         }
       } else {
         // Customer sign in (existing logic)
+        const userId = '1';
         setUser({
-          id: '1',
+          id: userId,
           email: values.email,
           name: values.email.split('@')[0],
           role: 'normal',
         });
+
+        // Store last login time
+        localStorage.setItem(`lastLogin_${userId}`, new Date().toISOString());
 
         notifications.show({
           title: t('loginSuccessful'),
