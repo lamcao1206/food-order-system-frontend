@@ -229,7 +229,7 @@
     "codeCopied": "Discount code copied to clipboard!",
     "used": "Used",
     "success": "Success!",
-    "exchangeSuccess": "You've successfully exchanged 100 points for a 10% discount code!",
+    "exchangeSuccess": "You've successfully exchanged 100 points for a 10.000d discount code!",
     "error": "Error",
     "notLoggedIn": "Please log in to exchange points",
     "insufficientPoints": "You don't have enough points. You need 100 points to exchange for a discount."
