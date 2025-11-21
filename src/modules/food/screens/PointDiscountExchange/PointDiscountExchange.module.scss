@@ -1,0 +1,41 @@
+.container {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.paper {
+  background: var(--mantine-color-body);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.infoCard {
+  background: var(--mantine-color-blue-0);
+}
+
+.exchangeButton {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.emptyCard {
+  text-align: center;
+  padding: 3rem;
+}
+
+.discountCard {
+  transition: transform 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--mantine-shadow-md);
+  }
+}
+
+.usedDiscountCard {
+  opacity: 0.7;
+}
+

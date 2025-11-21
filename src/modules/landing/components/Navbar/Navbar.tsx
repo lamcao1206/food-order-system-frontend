@@ -71,6 +71,7 @@ export function NavbarLanding() {
                 <Link to="/food/order">{t("landing:navbar.order")}</Link>
                 <Link to="/food/history">{t("landing:navbar.history")}</Link>
                 <Link to="/food/account">{t("landing:navbar.account")}</Link>
+                <Link to="/food/point-discount">{t("landing:navbar.pointDiscount")}</Link>
               </Group>
             )}
             <Group visibleFrom="sm" className={classes.desktopButtons}>
@@ -151,6 +152,11 @@ export function NavbarLanding() {
               <Link to="/food/account" onClick={close} style={{ textDecoration: 'none' }}>
                 <Button variant="subtle" fullWidth size="md" className={classes.mobileNavLink}>
                   {t("landing:navbar.account")}
+                </Button>
+              </Link>
+              <Link to="/food/point-discount" onClick={close} style={{ textDecoration: 'none' }}>
+                <Button variant="subtle" fullWidth size="md" className={classes.mobileNavLink}>
+                  {t("landing:navbar.pointDiscount")}
                 </Button>
               </Link>
             </Stack>

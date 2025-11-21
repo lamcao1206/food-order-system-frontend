@@ -18,6 +18,7 @@ import { IconPizza } from "@tabler/icons-react";
 import { useState } from "react";
 import { notifications } from "@mantine/notifications";
 import { discounts, vouchers } from "@/constants/food";
+import usePointDiscountStore from "@/lib/zustand/stores/usePointDiscountStore";
 
 const OrderItemsList = () => {
   const { t } = useTranslation('food');
@@ -27,6 +28,18 @@ const OrderItemsList = () => {
   );
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDiscount, setSelectedDiscount] = useState<string | null>(null);
+  const exchangeDiscounts = usePointDiscountStore((state) => state.discounts);
+  const applyPointDiscount = usePointDiscountStore((state) => state.actions.useDiscount);
+
+
+  const extendedVouchers = {
+    ...vouchers,
+    ...exchangeDiscounts.reduce((acc, d) => {
+      if (!d.used) acc[d.code] = d.discountPercent;
+      return acc;
+    }, {} as Record<string, number>)
+  };
+  
 
   const totalAmount = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -72,9 +85,15 @@ const OrderItemsList = () => {
   const addVoucher = useCartStore((state) => state.actions.addVoucher);
 
   const handleApply = () => {
-    const voucherValue = vouchers[code.toUpperCase()];
+    console.log("🚀 ~ handleApply ~ code:", code)
+    const voucherValue = extendedVouchers[code.toUpperCase()];
+    console.log("🚀 ~ handleApply ~ voucherValue:", voucherValue)
     if (voucherValue) {
       const result = addVoucher(voucherValue);
+      console.log("🚀 ~ handleApply ~ result:", result)
+      if (exchangeDiscounts.some(d => d.code === code.toUpperCase())) {
+        applyPointDiscount(code.toUpperCase());
+      }
       if (result)
         notifications.show({
           title: t('orderItems.applySuccessful'),

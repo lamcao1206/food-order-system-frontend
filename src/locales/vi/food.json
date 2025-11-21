@@ -211,5 +211,27 @@
   "loyalty": {
     "pointsEarned": "Đã tích lũy điểm!",
     "pointsMessage": "Bạn đã nhận được {{points}} điểm tích lũy từ đơn hàng này!"
+  },
+  "pointDiscount": {
+    "title": "Đổi Điểm Lấy Giảm Giá",
+    "yourPoints": "Điểm Của Bạn",
+    "exchangeRate": "Tỷ Lệ Đổi",
+    "discount": "Giảm Giá",
+    "exchangeButton": "Đổi 100 Điểm Lấy Giảm Giá 10.000d",
+    "needMorePoints": "Bạn cần thêm {{points}} điểm để đổi",
+    "yourDiscounts": "Mã Giảm Giá Của Bạn",
+    "noDiscounts": "Bạn chưa có mã giảm giá nào. Hãy đổi điểm để nhận mã giảm giá!",
+    "usedDiscounts": "Mã Đã Sử Dụng",
+    "off": "GIẢM",
+    "created": "Tạo lúc",
+    "copy": "Sao Chép",
+    "copied": "Đã Sao Chép",
+    "codeCopied": "Đã sao chép mã giảm giá vào clipboard!",
+    "used": "Đã Dùng",
+    "success": "Thành Công!",
+    "exchangeSuccess": "Bạn đã đổi thành công 100 điểm lấy mã giảm giá 10%!",
+    "error": "Lỗi",
+    "notLoggedIn": "Vui lòng đăng nhập để đổi điểm",
+    "insufficientPoints": "Bạn không đủ điểm. Bạn cần 100 điểm để đổi lấy mã giảm giá."
   }
 }

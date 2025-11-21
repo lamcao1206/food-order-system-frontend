@@ -6,6 +6,7 @@ import {FoodList} from "@/modules/food/screens/FoodList";
 import {OrderCheckOutPage} from "@/modules/food/screens/OrderCheckOut";
 import { OrderHistoryPage } from "@/modules/food/screens/OrderHistory";
 import { Account } from "@/modules/food/screens/Account";
+import { PointDiscountExchange } from "@/modules/food/screens/PointDiscountExchange";
 import { RestaurantOrderList } from "@/modules/restaurant/screens/RestaurantOrderList";
 type RouteType = RouteObject & { authCanAccess?: boolean };
 
@@ -39,6 +40,12 @@ const accountRoute: RouteType = {
   element: <Account />,
 };
 
+const pointDiscountRoute: RouteType = {
+  id: RouteId.POINT_DISCOUNT,
+  path: "point-discount",
+  element: <PointDiscountExchange />,
+};
+
 const restaurantRoute: RouteType = {
   id: RouteId.RESTAURANT,
   path: "orders",
@@ -55,7 +62,7 @@ const routes: RouteType[] = [
     id: RouteId.PRIVATE_ROOT,
     path: "/food",
     element: <ProtectedRoute allowedRole="normal" />,
-    children: [foodRoute,orderRoute,historyRoute,accountRoute]
+    children: [foodRoute,orderRoute,historyRoute,accountRoute,pointDiscountRoute]
   },
   {
     id: RouteId.RESTAURANT_ROOT,

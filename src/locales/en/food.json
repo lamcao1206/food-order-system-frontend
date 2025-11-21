@@ -211,5 +211,27 @@
   "loyalty": {
     "pointsEarned": "Loyalty Points Earned!",
     "pointsMessage": "You've earned {{points}} loyalty points from this order!"
+  },
+  "pointDiscount": {
+    "title": "Point Discount Exchange",
+    "yourPoints": "Your Points",
+    "exchangeRate": "Exchange Rate",
+    "discount": "Discount",
+    "exchangeButton": "Exchange 100 Points for 10.000d",
+    "needMorePoints": "You need {{points}} more points to exchange",
+    "yourDiscounts": "Your Available Discounts",
+    "noDiscounts": "You don't have any available discounts yet. Exchange points to get discounts!",
+    "usedDiscounts": "Used Discounts",
+    "off": "OFF",
+    "created": "Created",
+    "copy": "Copy",
+    "copied": "Copied",
+    "codeCopied": "Discount code copied to clipboard!",
+    "used": "Used",
+    "success": "Success!",
+    "exchangeSuccess": "You've successfully exchanged 100 points for a 10% discount code!",
+    "error": "Error",
+    "notLoggedIn": "Please log in to exchange points",
+    "insufficientPoints": "You don't have enough points. You need 100 points to exchange for a discount."
   }
 }

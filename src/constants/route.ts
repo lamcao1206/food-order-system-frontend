@@ -5,6 +5,7 @@ export enum RouteId {
   ORDER = 'order',
   HISTORY= 'history',
   ACCOUNT = 'account',
+  POINT_DISCOUNT = 'point-discount',
   RESTAURANT = 'restaurant',
   PUBLIC_ROOT = 'public-root',
   PRIVATE_ROOT = 'private-root',

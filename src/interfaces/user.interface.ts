@@ -3,4 +3,5 @@ export interface IUser {
   name: string;
   email: string;
   role: 'normal' | 'restaurant';
+  loyaltyPoints?: number;
 }
