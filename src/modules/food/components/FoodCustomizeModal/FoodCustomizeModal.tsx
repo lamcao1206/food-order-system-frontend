@@ -7,6 +7,8 @@ import {
   Checkbox,
   Button,
   Divider,
+  Avatar,
+  Textarea,
 } from "@mantine/core";
 import { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
@@ -18,6 +20,8 @@ import {
 } from "@/interfaces/food.interface";
 import { FoodCategory } from "@/constants/food";
 import useCartStore from "@/lib/zustand/stores/useCartStore";
+import useCommentStore from "@/lib/zustand/stores/commentStore";
+import useUserStore from "@/lib/zustand/stores/useUserStore";
 
 const size9InchImage = "https://dominos.vn/img/icon/pizza-size-2.png";
 const size12InchImage = "https://dominos.vn/img/icon/pizza-size-2.png";
@@ -71,7 +75,7 @@ const ProductCustomizenModal = ({
   product,
 }: FoodCustomizeModalProps) => {
   const isPizza = product.category === FoodCategory.PIZZA;
-  const { t } = useTranslation('food');
+  const { t } = useTranslation("food");
 
   const baseOptions = [
     {
@@ -150,7 +154,8 @@ const ProductCustomizenModal = ({
   const [selectedExtraTopping, setSelectedExtraTopping] = useState<string>("");
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCartStore((state) => state.actions);
-
+  const comments = useCommentStore((state) => state.data);
+  const { addComment } = useCommentStore((state) => state.actions);
   const totalPrice = useMemo(() => {
     let basePrice = 0;
 
@@ -185,6 +190,23 @@ const ProductCustomizenModal = ({
     extraToppingList,
     product.type,
   ]);
+  const [newComment, setNewComment] = useState("");
+  const currentUser = useUserStore((state) => state.user);
+  const handleAddComment = () => {
+    if (!newComment.trim()) return;
+
+    addComment(
+      product.id,
+      { id: currentUser?.id ?? "1", name: currentUser?.name ?? "" },
+      newComment.trim()
+    );
+
+    setNewComment("");
+  };
+  const userHasCommented = comments
+    .filter((c) => c.foodId === product.id)
+    .flatMap((c) => c.comments)
+    .some((c) => c.user.id === currentUser?.id);
 
   const handleQuantityChange = (delta: number) =>
     setQuantity((prev) => Math.max(1, prev + delta));
@@ -246,7 +268,9 @@ const ProductCustomizenModal = ({
             {product.category === FoodCategory.PIZZA && (
               <>
                 <Box className={classes.optionGroup}>
-                  <Text component="h3">{t('customizeModal.chooseBaseOption')}</Text>
+                  <Text component="h3">
+                    {t("customizeModal.chooseBaseOption")}
+                  </Text>
                   <Radio.Group value={selectedBase} onChange={setSelectedBase}>
                     <Stack gap={0}>
                       {baseOptions.map((opt) => (
@@ -262,7 +286,7 @@ const ProductCustomizenModal = ({
                 </Box>
 
                 <Box className={classes.optionGroup}>
-                  <Text component="h3">{t('customizeModal.selectSize')}</Text>
+                  <Text component="h3">{t("customizeModal.selectSize")}</Text>
                   <Radio.Group value={selectedSize} onChange={setSelectedSize}>
                     <Stack gap={0}>
                       {sizeOptions.map((opt) => (
@@ -279,7 +303,7 @@ const ProductCustomizenModal = ({
                 </Box>
 
                 <Box className={classes.optionGroup}>
-                  <Text component="h3">{t('customizeModal.extraTopping')}</Text>
+                  <Text component="h3">{t("customizeModal.extraTopping")}</Text>
                   <Radio.Group
                     value={selectedExtraTopping}
                     onChange={setSelectedExtraTopping}
@@ -301,7 +325,7 @@ const ProductCustomizenModal = ({
                 </Box>
 
                 <Box className={classes.optionGroup}>
-                  <Text component="h3">{t('customizeModal.crustOption')}</Text>
+                  <Text component="h3">{t("customizeModal.crustOption")}</Text>
                   <Radio.Group
                     value={selectedCrust}
                     onChange={setSelectedCrust}
@@ -347,9 +371,52 @@ const ProductCustomizenModal = ({
                 className={classes.addButton}
                 onClick={handleAddToCart}
               >
-                {t('customizeModal.addToCart')} {totalPrice.toLocaleString("vi-VN")}đ
+                {t("customizeModal.addToCart")}{" "}
+                {totalPrice.toLocaleString("vi-VN")}đ
               </Button>
             </Group>
+          </Box>
+        </Box>
+        <Box className={classes.commentSection}>
+          <Text className={classes.commentTitle}>
+            {t("customizeModal.comment")}
+          </Text>
+
+          <Box className={classes.commentList}>
+            {comments
+              .filter((c) => c.foodId === product.id)
+              .flatMap((c) => c.comments)
+              .map((c, idx) => (
+                <Box key={idx} className={classes.commentItem}>
+                  <Box className={classes.commentRow}>
+                    <Avatar size={30} radius="xl">
+                      {c.user.name[0]}
+                    </Avatar>
+
+                    <Text className={classes.userName}>{c.user.name}</Text>
+                  </Box>
+                  <Text className={classes.commentText}>{c.text}</Text>
+                </Box>
+              ))}
+          </Box>
+          <Box className={classes.commentInputSection} mt="sm">
+            <Textarea
+              placeholder={t("customizeModal.writeComment")}
+              minRows={2}
+              maxRows={4}
+              value={newComment}
+              onChange={(e) => setNewComment(e.currentTarget.value)}
+              styles={{ input: { fontSize: 14 } }}
+              disabled={userHasCommented}
+            />
+            <Button
+              mt="xs"
+              size="sm"
+              onClick={handleAddComment}
+              disabled={!newComment.trim()}
+            >
+              {t("customizeModal.send")}
+            </Button>
           </Box>
         </Box>
       </Box>

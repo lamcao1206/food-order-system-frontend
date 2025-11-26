@@ -194,7 +194,10 @@
     "noneTopping": "Không",
     "extraCheese": "Phô mai thêm",
     "traditionCrust": "Viền truyền thống",
-    "cheeseCrust": "Viền phô mai"
+    "cheeseCrust": "Viền phô mai",
+    "comment": "Bình luận",
+    "writeComment": "Viết bình luận của bạn",
+    "send": "Gửi"
   },
   "account": {
     "title": "Thông tin tài khoản",

@@ -194,7 +194,10 @@
     "noneTopping": "None",
     "extraCheese": "Extra cheese",
     "traditionCrust": "Tradition crust",
-    "cheeseCrust": "Cheese crust"
+    "cheeseCrust": "Cheese crust",
+    "comment": "Comment",
+    "writeComment": "Write your comment",
+    "send": "Send"
   },
   "account": {
     "title": "Account Information",

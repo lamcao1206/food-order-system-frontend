@@ -1,4 +1,4 @@
-@import "../../../../styles/__mantine.scss"; 
+@import "../../../../styles/__mantine.scss";
 
 .modalOverlay {
   position: fixed;
@@ -12,7 +12,7 @@
 
 .modalContainer {
   background: white;
-  width: 80vw;
+  width: 90vw;
   height: 80vh;
   display: flex;
   border-radius: rem(8);
@@ -146,4 +146,68 @@
   &:hover {
     background-color: #c62828;
   }
+}
+
+.commentSection {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-left: 1px solid #e4e4e4;
+  background: #fff;
+  padding: 16px;
+  width: 20vw;
+}
+
+.commentTitle {
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 17px;
+  color: #222;
+}
+
+.commentList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.commentItem {
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  padding: 12px 14px;
+  border-radius: 10px;
+  transition: background 0.18s ease;
+  &:hover {
+    background: #f1f1f1;
+  }
+}
+
+.commentRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.userName {
+  font-weight: 600;
+  color: #111;
+  margin-right: 4px;
+  font-size: 14px;
+}
+
+.commentText {
+  font-size: 14px;
+  line-height: 1.4;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #444;
+}
+
+.commentInputSection {
+  display: flex;
+  gap: 8px;
 }

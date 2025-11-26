@@ -1,4 +1,5 @@
 import { FoodCategory } from "../constants/food";
+
 export enum Base {
   THIN = "Thin Base Fresh Dough",
   MEDIUM = "Medium Base Fresh Dough",
@@ -36,4 +37,17 @@ export interface IDiscount {
   value: string;
   available: number;
   maxValue: number;
+}
+
+export interface CommentEntry {
+  user: {
+    id: string,
+    name:string
+  };
+  text: string;
+}
+
+export interface CommentItem {
+  foodId: number;
+  comments: CommentEntry[];
 }

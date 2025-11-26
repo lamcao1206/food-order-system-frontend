@@ -1,15 +1,15 @@
-import type {IDiscount} from '../interfaces/food.interface';
+import type { CommentItem, IDiscount } from "../interfaces/food.interface";
 
 export enum FoodCategory {
-    PIZZA = 'pizza',
-    PASTA = 'pasta',
-    APPETIZER = 'appetizer',
-    CHICKEN = 'chicken'
+  PIZZA = "pizza",
+  PASTA = "pasta",
+  APPETIZER = "appetizer",
+  CHICKEN = "chicken",
 }
 
 export const discounts: IDiscount[] = [
   {
-    id:1,
+    id: 1,
     name: "STARTER DEAL",
     description: "Discount when the order is greater than 200.000đ",
     value: "5%",
@@ -17,7 +17,7 @@ export const discounts: IDiscount[] = [
     maxValue: 20,
   },
   {
-    id:2,
+    id: 2,
     name: "HAPPY ORDER",
     description: "Discount when the order is greater than 250.000đ",
     value: "7%",
@@ -25,20 +25,20 @@ export const discounts: IDiscount[] = [
     maxValue: 35,
   },
   {
-    id:3,
+    id: 3,
     name: "BIG SAVER",
     description: "Discount when the order is greater than 350.000đ",
     value: "10%",
     available: 350,
-    maxValue: 70
+    maxValue: 70,
   },
   {
-    id:4,
+    id: 4,
     name: "SUPER SAVER",
     description: "Discount when the order is greater than 500.000đ",
     value: "20%",
     available: 500,
-    maxValue: 150
+    maxValue: 150,
   },
 ];
 
@@ -49,6 +49,57 @@ export const vouchers: Record<string, number> = {
 };
 
 export enum OrderStatus {
-  PENDING= 'pending',
-  COMPLETED= 'completed',
+  PENDING = "pending",
+  COMPLETED = "completed",
 }
+
+export const comments: CommentItem[] = [
+  {
+    foodId: 1,
+    comments: [
+      {
+        user: { id: "2", name: "minhtrinh" },
+        text: "Món ăn này ngon lắm",
+      },
+      {
+        user: { id: "3", name: "namkhanhho" },
+        text: "Món ăn cũng tạm",
+      },
+      {
+        user: { id: "4", name: "phuonglannguyen" },
+        text: "Phải thử thêm lần nữa mới biết",
+      },
+    ],
+  },
+  {
+    foodId: 2,
+    comments: [
+      {
+        user: { id: "5", name: "tranghuyentran" },
+        text: "Đồ uống ngon, phục vụ nhanh",
+      },
+      {
+        user: { id: "6", name: "tuminhtran" },
+        text: "Ngon nhưng hơi đắt",
+      },
+    ],
+  },
+  {
+    foodId: 3,
+    comments: [
+      {
+        user: { id: "7", name: "huyquocphan" },
+        text: "Chất lượng món ăn ổn",
+      },
+      {
+        user: { id: "8", name: "tungthanhnguyen" },
+        text: "Mình thấy hơi nhạt",
+      },
+      {
+        user: { id: "9", name: "nhunghongnguyen" },
+        text: "Sẽ quay lại lần sau",
+      },
+    ],
+  },
+];
+
