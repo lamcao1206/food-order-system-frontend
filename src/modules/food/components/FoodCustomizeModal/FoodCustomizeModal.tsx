@@ -386,18 +386,23 @@ const ProductCustomizenModal = ({
             {comments
               .filter((c) => c.foodId === product.id)
               .flatMap((c) => c.comments)
-              .map((c, idx) => (
-                <Box key={idx} className={classes.commentItem}>
-                  <Box className={classes.commentRow}>
-                    <Avatar size={30} radius="xl">
-                      {c.user.name[0]}
-                    </Avatar>
+              .map((c, idx) => {
+                const isCurrentUser = c.user.id === currentUser?.id; 
+                return (
+                  <Box key={idx} className={classes.commentItem}>
+                    <Box className={classes.commentRow}>
+                      <Avatar size={30} radius="xl">
+                        {c.user.name[0].toUpperCase()}
+                      </Avatar>
 
-                    <Text className={classes.userName}>{c.user.name}</Text>
+                      <Text className={classes.userName}>
+                        {c.user.name} {isCurrentUser && "(you)"}
+                      </Text>
+                    </Box>
+                    <Text className={classes.commentText}>{c.text}</Text>
                   </Box>
-                  <Text className={classes.commentText}>{c.text}</Text>
-                </Box>
-              ))}
+                );
+              })}
           </Box>
           <Box className={classes.commentInputSection} mt="sm">
             <Textarea

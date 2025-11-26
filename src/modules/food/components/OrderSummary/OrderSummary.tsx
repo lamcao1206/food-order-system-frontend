@@ -7,25 +7,27 @@ import useOrderStore from "@/lib/zustand/stores/useOrderStore";
 import type { IFoodState } from "@/lib/zustand/slices/cartSlice";
 import type { CartItemInput } from "@/interfaces/food.interface";
 import { notifications } from "@mantine/notifications";
-import { discounts } from "@/constants/food";
+import { discounts, OrderStatus } from "@/constants/food";
 import type { IOrderState } from "@/lib/zustand/slices/orderSlice";
 import useUserStore from "@/lib/zustand/stores/useUserStore";
 import { IconStar } from "@tabler/icons-react";
-
+import useOrderHistoryState from "@/lib/zustand/stores/orderHistoryStore";
 
 const OrderSummary = () => {
-  const { t } = useTranslation('food');
+  const { t } = useTranslation("food");
   const deliveryFee = 16;
   const cartItems: CartItemInput[] = useCartStore(
     (state: IFoodState) => state.cart
   );
-  const voucher: number | null |undefined = useCartStore(
+  const voucher: number | null | undefined = useCartStore(
     (state: IFoodState) => state.extraVoucher
   );
   const discountId: number | string | null | undefined = useCartStore(
     (state: IFoodState) => state.discount
   );
-  const addLoyaltyPoints = useUserStore((state) => state.actions.addLoyaltyPoints);
+  const addLoyaltyPoints = useUserStore(
+    (state) => state.actions.addLoyaltyPoints
+  );
   const {
     addToCart,
     setDiscount,
@@ -35,7 +37,7 @@ const OrderSummary = () => {
     setOrderDate,
     setDeliveryFee,
   } = useOrderStore((state: IOrderState) => state.actions);
-
+  const { addOrder } = useOrderHistoryState((state) => state.actions);
   const discount = discounts.find((disc) => disc.id === discountId);
   const totalPrice = cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
@@ -59,25 +61,32 @@ const OrderSummary = () => {
     totalAmount -= discountValue;
   }
   totalAmount += deliveryFee * 1000;
-  const { clearCart, setDiscount: clearDiscount, addVoucher: clearVoucher } = useCartStore((state) => state.actions);
+  const {
+    clearCart,
+    setDiscount: clearDiscount,
+    addVoucher: clearVoucher,
+  } = useCartStore((state) => state.actions);
 
   const onOrderSuccess = () => {
     if (totalAmount > 0) {
       // Calculate loyalty points: 100,000₫ = 10 points, so 10,000₫ = 1 point
       const pointsEarned = Math.floor(totalAmount / 10000);
-      
+
       // Add loyalty points
       if (pointsEarned > 0) {
         addLoyaltyPoints(pointsEarned);
       }
 
       // Show combined success and loyalty points notification
-      const successMessage = pointsEarned > 0 
-        ? `${t('success.message')} ${t('loyalty.pointsMessage', { points: pointsEarned })}`
-        : t('success.message');
-      
+      const successMessage =
+        pointsEarned > 0
+          ? `${t("success.message")} ${t("loyalty.pointsMessage", {
+              points: pointsEarned,
+            })}`
+          : t("success.message");
+
       notifications.show({
-        title: t('success.title'),
+        title: t("success.title"),
         message: successMessage,
         color: "green",
         position: "top-right",
@@ -87,25 +96,45 @@ const OrderSummary = () => {
     }
     addToCart(cartItems);
     setDiscount(discountValue ?? null);
-    addVoucher(voucher ? voucher*1000 : null);
+    addVoucher(voucher ? voucher * 1000 : null);
     setPaymentMethod("Cash on delivery");
     setAddress("ABC X ABC");
     setOrderDate();
-    setDeliveryFee(deliveryFee*1000);
+    setDeliveryFee(deliveryFee * 1000);
     clearCart();
     clearDiscount(null);
     clearVoucher(null);
+    const now = new Date();
+    const formatted = now.toLocaleString("vi-VN", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+    });
+    const newOrder = {
+      orderDate: formatted,
+      deliveryFee: deliveryFee ? deliveryFee * 1000 : 0,
+      discount: discountValue ?? 0,
+      extraVoucher: voucher ? voucher * 1000 : 0,
+      paymentMethod: "Cash on delivery",
+      address: "ABC X ABC",
+      cart: cartItems,
+      status: OrderStatus.PENDING,
+    };
+    addOrder(newOrder);
   };
   return (
     <Box>
       <Stack gap="md">
         <Stack gap={4} pt="md">
           <Group justify="space-between">
-            <Text size="sm">{t('orderSummary.total')}</Text>
+            <Text size="sm">{t("orderSummary.total")}</Text>
             <Text size="sm">{totalPrice.toLocaleString("vi-VN")}đ</Text>
           </Group>
           <Group justify="space-between" align="flex-start">
-            <Text size="sm">{t('orderSummary.vouchersDiscount')}</Text>
+            <Text size="sm">{t("orderSummary.vouchersDiscount")}</Text>
             <Stack gap={0}>
               {voucher && (
                 <Text size="sm" style={{ color: "#fa5252" }}>
@@ -125,7 +154,7 @@ const OrderSummary = () => {
             </Stack>
           </Group>
           <Group justify="space-between">
-            <Text size="sm">{t('orderSummary.deliveryFee')}</Text>
+            <Text size="sm">{t("orderSummary.deliveryFee")}</Text>
             <Text size="sm">{`+${(deliveryFee * 1000).toLocaleString(
               "vi-VN"
             )}đ`}</Text>
@@ -141,7 +170,9 @@ const OrderSummary = () => {
           className={classes.checkoutButton}
           onClick={() => onOrderSuccess()}
         >
-          {`${t('orderSummary.completeOrder')}  ${totalAmount.toLocaleString("vi-VN")}Đ`}
+          {`${t("orderSummary.completeOrder")}  ${totalAmount.toLocaleString(
+            "vi-VN"
+          )}Đ`}
         </Button>
       </Stack>
     </Box>

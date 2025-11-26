@@ -70,7 +70,9 @@
     "discount": "Giảm giá",
     "voucher": "Voucher",
     "deliveryFee": "Phí giao hàng",
-    "total": "Tổng cộng"
+    "total": "Tổng cộng",
+    "rateOrder": "Đánh giá đơn hàng",
+    "successRating": "Đánh giá thành công"
   },
   "success": {
     "title": "Thành công!",

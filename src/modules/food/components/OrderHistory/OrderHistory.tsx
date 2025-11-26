@@ -1,121 +1,22 @@
-import { Card, Text, Group, Divider, Badge } from "@mantine/core";
+import { Card, Text, Group, Divider, Badge, Rating } from "@mantine/core";
 import { useTranslation } from "react-i18next";
 import classes from "./OrderHistory.module.scss";
 import { OrderStatus } from "@/constants/food";
-import useOrderStore from "@/lib/zustand/stores/useOrderStore";
-import { useEffect, useState } from "react";
+import useOrderHistoryState from "@/lib/zustand/stores/orderHistoryStore";
+import { notifications } from "@mantine/notifications";
 
-const ordersHistory = [
-  {
-    orderDate: "14:30:00 13/11/2025",
-    deliveryFee: 15000,
-    discount: 10000,
-    extraVoucher: 5000,
-    paymentMethod: "Cash on delivery",
-    address: "123 Nguyễn Văn Cừ, Quận 5",
-    cart: [
-      {
-        id: 1,
-        name: "Honey Glazed Chicken",
-        price: 170000,
-        quantity: 1,
-      },
-    ],
-    status: OrderStatus.COMPLETED,
-  },
-  {
-    orderDate: "10:30:00 7/11/2025",
-    deliveryFee: 20000,
-    discount: 0,
-    extraVoucher: 10000,
-    paymentMethod: "Cash on delivery",
-    address: "55 Trần Hưng Đạo, Quận 1",
-    cart: [
-      {
-        id: 3,
-        name: "Spaghetti Carbonara",
-        price: 180000,
-        quantity: 1,
-      },
-      {
-        id: 4,
-        name: "Teriyaki Chicken",
-        price: 180000,
-        quantity: 1,
-      },
-    ],
-    status: OrderStatus.COMPLETED,
-  },
-  {
-    orderDate: "8:00:00 6/11/2025",
-    deliveryFee: 15000,
-    discount: 20000,
-    extraVoucher: 0,
-    paymentMethod: "Cash on delivery",
-    address: "456 Lê Lợi, Quận 3",
-    cart: [
-      {
-        id: 5,
-        name: "Stuffed Mushrooms",
-        price: 110000,
-        quantity: 2,
-      },
-      {
-        id: 6,
-        name: "Crispy Fried Chicke",
-        price: 150000,
-        quantity: 1,
-      },
-    ],
-    status: OrderStatus.COMPLETED,
-  },
-];
 export default function OrderHistory() {
-  const { t } = useTranslation('food');
-  const currentCart = useOrderStore((state) => state.cart ?? []);
-  const orderDate = useOrderStore((state) => state.orderDate);
-  const deliveryFee = useOrderStore((state) => state.deliveryFee);
-  const discount = useOrderStore((state) => state.discount);
-  const extraVoucher = useOrderStore((state) => state.extraVoucher);
-  const paymentMethod = useOrderStore((state) => state.paymentMethod);
-  const address = useOrderStore((state) => state.address);
+  const { t } = useTranslation("food");
 
-  const [orders, setOrders] = useState(ordersHistory);
-
-  useEffect(() => {
-    if (currentCart?.length === 0) return;
-
-    const newOrder = {
-      orderDate: orderDate,
-      deliveryFee: deliveryFee ?? 0,
-      discount: discount ?? 0,
-      extraVoucher: extraVoucher ?? 0,
-      paymentMethod: paymentMethod ?? "Cash on delivery",
-      address: address ?? "",
-      cart: currentCart,
-      status: OrderStatus.PENDING,
-    };
-
-    setOrders((prev) => {
-      const lastOrder = prev[0];
-      if (JSON.stringify(lastOrder.cart) === JSON.stringify(currentCart)) {
-        return prev;
-      }
-      return [newOrder, ...prev];
-    });
-  }, [
-    currentCart,
-    orderDate,
-    deliveryFee,
-    discount,
-    extraVoucher,
-    paymentMethod,
-    address,
-  ]);
+  const orders = useOrderHistoryState((state) => state.orders);
+  const { updateRating } = useOrderHistoryState(
+    (state) => state.actions
+  );
 
   return (
     <div className={classes.history_container}>
       {orders.map((order, index) => {
+        console.log("ORDER", order);
         const itemsTotal = order.cart.reduce(
           (sum, item) => sum + item.price * item.quantity,
           0
@@ -136,7 +37,7 @@ export default function OrderHistory() {
           >
             <Group justify="space-between">
               <Text fw={700} fz="lg">
-                🧾 {t('orderHistory.order')} #{index + 1}
+                🧾 {t("orderHistory.order")} #{index + 1}
               </Text>
               <Group>
                 <span
@@ -149,10 +50,10 @@ export default function OrderHistory() {
                   }`}
                 >
                   {order.status === OrderStatus.COMPLETED
-                    ? t('orderHistory.completed')
+                    ? t("orderHistory.completed")
                     : order.status === OrderStatus.PENDING
-                    ? t('orderHistory.pending')
-                    : t('orderHistory.canceled')}
+                    ? t("orderHistory.pending")
+                    : t("orderHistory.canceled")}
                 </span>
                 <Badge color="blue">{order.orderDate}</Badge>
               </Group>
@@ -172,17 +73,17 @@ export default function OrderHistory() {
 
                     {item.size && (
                       <Text size="sm" c="dimmed">
-                        {t('orderItems.size')}: {item.size}
+                        {t("orderItems.size")}: {item.size}
                       </Text>
                     )}
                     {item.additionalCheese && (
                       <Text size="sm" c="dimmed">
-                        {t('orderItems.cheese')}: {item.additionalCheese}
+                        {t("orderItems.cheese")}: {item.additionalCheese}
                       </Text>
                     )}
                     {item.additionalCrust && (
                       <Text size="sm" c="dimmed">
-                        {t('orderItems.crust')}: {item.additionalCrust}
+                        {t("orderItems.crust")}: {item.additionalCrust}
                       </Text>
                     )}
                   </div>
@@ -199,22 +100,22 @@ export default function OrderHistory() {
             {/* TOTAL */}
             <div className={classes.order_summary}>
               <Group justify="space-between">
-                <Text>{t('orderHistory.dishes')}:</Text>
+                <Text>{t("orderHistory.dishes")}:</Text>
                 <Text>{itemsTotal.toLocaleString()}đ</Text>
               </Group>
 
               <Group justify="space-between">
-                <Text>{t('orderHistory.discount')}:</Text>
+                <Text>{t("orderHistory.discount")}:</Text>
                 <Text>-{discount.toLocaleString()}đ</Text>
               </Group>
 
               <Group justify="space-between">
-                <Text>{t('orderHistory.voucher')}:</Text>
+                <Text>{t("orderHistory.voucher")}:</Text>
                 <Text>-{voucher.toLocaleString()}đ</Text>
               </Group>
 
               <Group justify="space-between">
-                <Text>{t('orderHistory.deliveryFee')}:</Text>
+                <Text>{t("orderHistory.deliveryFee")}:</Text>
                 <Text>{deliveryFee.toLocaleString()}đ</Text>
               </Group>
 
@@ -222,13 +123,33 @@ export default function OrderHistory() {
 
               <Group justify="space-between">
                 <Text fw={700} fz="lg">
-                  {t('orderHistory.total')}:
+                  {t("orderHistory.total")}:
                 </Text>
                 <Text fw={700} fz="lg" c="green">
                   {finalTotal.toLocaleString()}đ
                 </Text>
               </Group>
             </div>
+            {order.status === OrderStatus.COMPLETED && (
+              <div className={classes.ratingSection}>
+                <span className={classes.ratingLabel}>
+                  {t("orderHistory.rateOrder")}:
+                </span>
+                <Rating
+                  value={order.rating || 0}
+                  onChange={(value) => {
+                    updateRating(index, value || 0);
+                    notifications.show({
+                      title: t("success.title"),
+                      message: t("orderHistory.successRating"),
+                      color: "green",
+                    });
+                  }}
+                  size="lg"
+                  readOnly={!!order.rating}
+                />
+              </div>
+            )}
           </Card>
         );
       })}

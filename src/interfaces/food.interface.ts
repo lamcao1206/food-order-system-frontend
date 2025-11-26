@@ -1,4 +1,4 @@
-import { FoodCategory } from "../constants/food";
+import { FoodCategory, OrderStatus } from "../constants/food";
 
 export enum Base {
   THIN = "Thin Base Fresh Dough",
@@ -15,6 +15,18 @@ export interface CartItemInput {
   base?: Base;
   additionalCheese?: string;
   additionalCrust?: string;
+}
+
+export interface OrderItem {
+  orderDate: string;
+  deliveryFee: number;
+  discount: number;
+  extraVoucher: number;
+  paymentMethod: string;
+  address: string;
+  cart: CartItemInput[];
+  status: OrderStatus;
+  rating?: number | null;
 }
 
 export interface ProductType {

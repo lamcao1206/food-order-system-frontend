@@ -70,7 +70,9 @@
     "discount": "Discount",
     "voucher": "Voucher",
     "deliveryFee": "Delivery fee",
-    "total": "Total"
+    "total": "Total",
+    "rateOrder": "Rate Order",
+    "successRating": "Rating successfully"
   },
   "success": {
     "title": "Success!",

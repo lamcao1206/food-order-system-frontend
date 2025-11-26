@@ -1,4 +1,4 @@
-import type { CommentItem, IDiscount } from "../interfaces/food.interface";
+import type { CommentItem, IDiscount, OrderItem } from "../interfaces/food.interface";
 
 export enum FoodCategory {
   PIZZA = "pizza",
@@ -103,3 +103,46 @@ export const comments: CommentItem[] = [
   },
 ];
 
+export const orderHistories: OrderItem[] = [
+  {
+    orderDate: "14:30:00 13/11/2025",
+    deliveryFee: 15000,
+    discount: 10000,
+    extraVoucher: 5000,
+    paymentMethod: "Cash on delivery",
+    address: "123 Nguyễn Văn Cừ, Quận 5",
+    cart: [
+      { id: 1, name: "Honey Glazed Chicken", price: 170000, quantity: 1 },
+    ],
+    status: OrderStatus.COMPLETED,
+    rating: null,
+  },
+  {
+    orderDate: "10:30:00 7/11/2025",
+    deliveryFee: 20000,
+    discount: 0,
+    extraVoucher: 10000,
+    paymentMethod: "Cash on delivery",
+    address: "55 Trần Hưng Đạo, Quận 1",
+    cart: [
+      { id: 3, name: "Spaghetti Carbonara", price: 180000, quantity: 1 },
+      { id: 4, name: "Teriyaki Chicken", price: 180000, quantity: 1 },
+    ],
+    status: OrderStatus.COMPLETED,
+    rating: 4,
+  },
+  {
+    orderDate: "8:00:00 6/11/2025",
+    deliveryFee: 15000,
+    discount: 20000,
+    extraVoucher: 0,
+    paymentMethod: "Cash on delivery",
+    address: "456 Lê Lợi, Quận 3",
+    cart: [
+      { id: 5, name: "Stuffed Mushrooms", price: 110000, quantity: 2 },
+      { id: 6, name: "Crispy Fried Chicke", price: 150000, quantity: 1 },
+    ],
+    status: OrderStatus.COMPLETED,
+    rating: null,
+  },
+];
